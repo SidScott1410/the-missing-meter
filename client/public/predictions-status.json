@@ -1,0 +1,52 @@
+{
+  "_comment": "Edit this file to update prediction statuses without touching component code.",
+  "_status_values": ["Open", "Half met", "Met", "Failed"],
+  "_last_updated": "2026-07-31",
+  "predictions": [
+    {
+      "id": "P1",
+      "status": "Open",
+      "note": "Baseline: on OpenRouter, open-weight models reached ~1/3 of routed token volume by late 2025 and rose through mid-2026. But routers exclude first-party traffic — Google alone disclosed 3.2 quadrillion tokens/month by May 2026, roughly 25× OpenRouter's entire throughput. Corrected for first-party volume, the defensible whole-market open-weight share as of mid-2026 is in the low double digits. Currently false, which is what makes it a prediction."
+    },
+    {
+      "id": "P2",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P2b",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P3",
+      "status": "Half met",
+      "note": "Amazon cut servers from six years to five, effective January 2025, citing the accelerated pace of technology development in AI — at a cost of ~$0.7B of 2025 operating income. Alphabet, Microsoft, Meta, and Oracle most recently extended. One of the two required movers exists; no company yet reports accelerators as a segmented asset class, and four of five most recently moved in the opposite direction."
+    },
+    {
+      "id": "P4",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P5",
+      "status": "Open",
+      "note": "Baseline: AWS CEO stated in January 2026 that AWS has never retired an A100 server and remains sold out of them. Google reports full utilization on seven- and eight-year-old TPUs. Against that, secondary H100 prices fall to a fraction of peak within two to three years and brokers describe the market as structurally opaque. No public, systematic measurement of GPU utilization by age cohort exists as of mid-2026 — which is itself the paper's measurement argument in a different form."
+    },
+    {
+      "id": "P6",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P7",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P8",
+      "status": "Open",
+      "note": null
+    }
+  ]
+}

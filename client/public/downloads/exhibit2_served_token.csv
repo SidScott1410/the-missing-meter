@@ -1,0 +1,17 @@
+# TABLE 1: PROVIDER MEASUREMENTS
+provider_class,model,price_usd_per_Mtok,output_tokens_per_sec,ttft_sec,artifact,source
+cheapest,Llama 3.3 70B,0.12,15.2,n/a,fp8-quantized,"Artificial Analysis, accessed 2026-07-12 [ref 38]"
+fastest,Llama 3.3 70B,0.64,329.6,0.95,bf16,"Artificial Analysis, accessed 2026-07-12 [ref 38]"
+highest_price,Llama 3.3 70B,1.05,n/a,n/a,varies,"Artificial Analysis, accessed 2026-07-12 [ref 38]"
+
+# TABLE 2: WORKLOAD SLO DEFINITIONS
+workload,slo_ttft_max_sec,slo_min_tokens_per_sec,deadline,notes
+interactive_voice,1.0,100,none,speech falls behind playback below 100 tok/s
+overnight_batch,none,none,12h,no per-token latency floor
+
+# TABLE 3: SERVED-TOKEN COST BY WORKLOAD x PROVIDER
+workload,provider_class,meets_slo,served_token_cost_usd_per_Msvt,interpretation
+interactive_voice,cheapest,FALSE,infinity,15.2 tok/s < 100 floor; zero served tokens; cheapest token priced at infinity for this buyer
+interactive_voice,fastest,TRUE,0.64,clears SLO; served-token cost equals raw price; the only compliant placement
+overnight_batch,cheapest,TRUE,0.12,every provider compliant; svt collapses to raw price; cheapest wins by 5.3x
+overnight_batch,fastest,TRUE,0.64,compliant but paying 5.3x for speed the deadline cannot use

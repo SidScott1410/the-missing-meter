@@ -1,0 +1,9 @@
+series,year,value,unit,status,source
+hyperscaler_capex,2022,150,USD_billions,compiled,"Company reports (MSFT+GOOGL+AMZN+META, company-wide)"
+hyperscaler_capex,2023,150,USD_billions,compiled,Company reports (company-wide)
+hyperscaler_capex,2024,228,USD_billions,compiled,Company reports; Belfer itemization $222-230B range
+hyperscaler_capex,2025,410,USD_billions,reported,Financial Times compilation of Q1 2026 earnings [ref 1]
+hyperscaler_capex,2026,725,USD_billions,guidance,Company guidance via Financial Times [ref 1]
+inference_cost_gpt35class,2022.88,20.00,USD_per_Mtok,measured,Stanford HAI AI Index 2025 [ref 4]
+inference_cost_gpt35class,2024.79,0.07,USD_per_Mtok,measured,Stanford HAI AI Index 2025 (Gemini-1.5-Flash-8B) [ref 4]
+inference_cost_upper_bound,2026.53,0.12,USD_per_Mtok,measured_more_capable_class,"Artificial Analysis, Llama 3.3 70B blended, upper bound [ref 38]"
