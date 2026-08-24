@@ -11,7 +11,8 @@
     "check": "tsc --noEmit",
     "format": "prettier --write .",
     "build:prerender": "node scripts/prerender.mjs",
-    "build:pages": "VITE_BASE_PATH=./ pnpm build"
+    "build:pages": "VITE_BASE_PATH=./ pnpm build:static",
+    "build:static": "vite build && node scripts/prerender.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -95,6 +96,10 @@
     },
     "overrides": {
       "tailwindcss>nanoid": "3.3.7"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild"
+    ]
   }
 }

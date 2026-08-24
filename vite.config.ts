@@ -20,6 +20,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        // The article is one route, so route-level code splitting buys nothing.
+        // Splitting by vendor does: react and the charting/animation libraries
+        // are stable across content edits and cache independently of the prose.
+        manualChunks: {
+          react: ["react", "react-dom"],
+          charts: ["recharts"],
+          motion: ["framer-motion"],
+        },
+      },
+    },
   },
   server: {
     port: 3000,
