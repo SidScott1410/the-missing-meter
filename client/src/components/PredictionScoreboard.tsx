@@ -4,6 +4,7 @@
 // Each card is collapsed by default; click to expand claim + kill criterion.
 
 import { useState, useEffect } from "react";
+import { withBase } from "@/lib/asset";
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; border: string }> = {
   "Open":     { bg: "var(--surface)", color: "var(--ink-mid)", border: "var(--rule)" },
@@ -316,7 +317,7 @@ export default function PredictionScoreboard() {
   const [lastUpdated, setLastUpdated] = useState("July 31, 2026");
 
   useEffect(() => {
-    fetch("/predictions-status.json")
+    fetch(withBase("predictions-status.json"))
       .then((r) => r.json())
       .then((data: StatusConfig) => {
         setOverrides(data);

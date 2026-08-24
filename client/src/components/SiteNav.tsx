@@ -6,6 +6,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Menu, X, Download } from "lucide-react";
+import { withBase } from "@/lib/asset";
 
 const NAV_LINKS = [
   { label: "Abstract", href: "#abstract" },
@@ -90,7 +91,7 @@ export default function SiteNav() {
             </a>
           ))}
           <a
-            href="/downloads/The_Missing_Meter.pdf"
+            href={withBase("downloads/The_Missing_Meter.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-pill"
@@ -149,7 +150,7 @@ export default function SiteNav() {
             </a>
           ))}
           <a
-            href="/downloads/The_Missing_Meter.pdf"
+            href={withBase("downloads/The_Missing_Meter.pdf")}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileOpen(false)}

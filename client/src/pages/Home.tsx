@@ -32,6 +32,7 @@ import WorkedExampleAccordion from "@/components/WorkedExampleAccordion";
 import ScrollToTop from "@/components/ScrollToTop";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import OpenProblemsAccordion from "@/components/OpenProblemsAccordion";
+import { withBase } from "@/lib/asset";
 
 /* ─── Fade-up hook ─────────────────────────────────────────────────────────── */
 function useFadeUp() {
@@ -255,7 +256,7 @@ function HeroSection() {
           </span>
           <span className="meta-label">PDF</span>
           <span className="meta-value">
-            <a href="/downloads/The_Missing_Meter.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            <a href={withBase("downloads/The_Missing_Meter.pdf")} target="_blank" rel="noopener noreferrer" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
               Download PDF
             </a>
           </span>

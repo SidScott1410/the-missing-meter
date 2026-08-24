@@ -1,3 +1,4 @@
+import { withBase } from "@/lib/asset";
 // SiteFooter — minimal, monochromatic (pi.website style)
 // Meter-tick brand motif, light background, thin rule, wordmark, legal line
 
@@ -71,7 +72,7 @@ export default function SiteFooter() {
           <div>
             <div style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-light)", marginBottom: "0.6rem" }}>Resources</div>
             {[
-              { label: "Download PDF", href: "/downloads/The_Missing_Meter.pdf" },
+              { label: "Download PDF", href: withBase("downloads/The_Missing_Meter.pdf") },
               { label: "Contact Author", href: "mailto:sidney@themissingmeter.org" },
               { label: "DOI: pending", href: "#" },
             ].map((l) => (

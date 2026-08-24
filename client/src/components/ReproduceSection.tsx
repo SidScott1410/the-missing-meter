@@ -4,6 +4,7 @@
 // Design: audit-signal aesthetic, monospace, instrument-panel feel
 
 import { FileText, Download, Table } from "lucide-react";
+import { withBase } from "@/lib/asset";
 
 const ARTIFACTS = [
   {
@@ -14,7 +15,7 @@ const ARTIFACTS = [
     format: "CSV",
     rows: "48 rows",
     icon: <Table size={16} />,
-    href: "/downloads/exhibit1_scissors.csv",
+    href: withBase("downloads/exhibit1_scissors.csv"),
     filename: "exhibit1_scissors.csv",
   },
   {
@@ -25,7 +26,7 @@ const ARTIFACTS = [
     format: "CSV",
     rows: "85 rows",
     icon: <Table size={16} />,
-    href: "/downloads/exhibit2_served_token.csv",
+    href: withBase("downloads/exhibit2_served_token.csv"),
     filename: "exhibit2_served_token.csv",
   },
   {
@@ -36,7 +37,7 @@ const ARTIFACTS = [
     format: "PDF",
     rows: "12 pages",
     icon: <FileText size={16} />,
-    href: "/downloads/worked_example.pdf",
+    href: withBase("downloads/worked_example.pdf"),
     filename: "worked_example.pdf",
   },
 ];

@@ -1,6 +1,10 @@
 name: Deploy GitHub Pages
 
+# Publish on every push to main, plus a manual button.
+# Without the `push` trigger this workflow never ran on its own.
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -18,24 +22,30 @@ jobs:
     steps:
       - name: Check out source
         uses: actions/checkout@v4
+
+      # No `version:` input. pnpm/action-setup@v4 reads the `packageManager`
+      # field in package.json. Supplying both makes the step fail with
+      # "Multiple versions of pnpm specified".
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
       - name: Build static site
         run: pnpm build:pages
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/public
+
   deploy:
     environment:
       name: github-pages

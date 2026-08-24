@@ -24,6 +24,10 @@ async function prerender() {
 
   await build({
     root: resolve(root, "client"),
+    // Must match the client build's base, otherwise import.meta.env.BASE_URL
+    // is "/" inside the SSR bundle and the prerendered markup emits
+    // root-absolute asset links that are wrong under a project-path deploy.
+    base: process.env.VITE_BASE_PATH || "/",
     build: {
       ssr: resolve(root, "client/src/entry-server.tsx"),
       outDir: resolve(root, "dist/server"),
@@ -87,6 +91,11 @@ async function prerender() {
   );
 
   writeFileSync(templatePath, html);
+
+  // GitHub Pages has no SPA rewrite rule (netlify.toml / _redirects are ignored
+  // there). Shipping 404.html as a copy of index.html makes any unknown path
+  // boot the app instead of showing GitHub's default 404.
+  writeFileSync(resolve(root, "dist/public/404.html"), html);
 
   const textLength = appHtml.replace(/<[^>]+>/g, "").trim().length;
   console.log(`✅ Prerender complete — injected ~${textLength.toLocaleString()} characters of text content`);
