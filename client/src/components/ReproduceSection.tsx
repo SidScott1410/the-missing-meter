@@ -33,7 +33,7 @@ const ARTIFACTS = [
     id: "worked-example",
     label: "Worked example",
     title: "Served token inversion: Llama 3.3 70B across 15 providers",
-    description: "Step-by-step walkthrough of the Section 8 / Fig. 3 calculation. Provider pricing and throughput from Artificial Analysis June 2026. Shows the interactive vs. batch inversion from raw inputs to final $/svt figures. Reproducible in a spreadsheet.",
+    description: "Step-by-step walkthrough of the Appendix A.9 calculation. Provider pricing and throughput from Artificial Analysis July 2026. Shows the interactive versus batch inversion from raw inputs to final $/MSVT figures. Reproducible in a spreadsheet.",
     format: "PDF",
     rows: "12 pages",
     icon: <FileText size={16} />,
@@ -78,10 +78,11 @@ export default function ReproduceSection() {
           fontFamily: "Inter, system-ui, sans-serif",
         }}>
           The three downloadable artifacts below support the public exhibits and worked example. No
-          proprietary data, model access, or API keys are required. The inversion in Fig. 3 can be
-          reproduced in a spreadsheet in under ten minutes. The reference implementation, JSON
-          record schema, test suite, trace-replay harness, fitted workload statistics, and sweep
-          outputs are not yet published on this site.
+          proprietary data, model access, or API keys are required. The Appendix A.9 inversion can
+          be reproduced in a spreadsheet in under ten minutes. The final PDF refers to a reference
+          implementation, record schema, test suite, trace-replay harness, fitted workload
+          statistics, and sweep outputs supplied with the submission. Those ancillary materials are
+          not yet published on this site.
         </p>
       </div>
 
@@ -113,7 +114,7 @@ export default function ReproduceSection() {
             ))}
           </span>
           <span style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(255,255,255,0.55)" }}>
-            Data provenance manifest · v1.0 · July 15, 2026
+            Data provenance manifest · v1.0 · October 1, 2026
           </span>
         </div>
 
@@ -237,7 +238,7 @@ export default function ReproduceSection() {
         borderLeft: "2px solid var(--rule)",
       }}>
         All sources are public. No proprietary datasets, no model access required.
-        The worked example reproduces Fig. 3 from provider pricing pages alone.
+        The worked example reproduces Appendix A.9 from provider pricing pages alone.
       </p>
     </section>
   );

@@ -70,7 +70,7 @@ export default function Home() {
 }
 
 /* ─── Cite button ─────────────────────────────────────────────────────────── */
-const CITATION = `Scott, Sidney. "The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks." v1.0, July 15, 2026. https://themissingmeter.org`;
+const CITATION = `Scott, Sidney. "The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks." v1.0, October 1, 2026. https://themissingmeter.org`;
 
 function CiteButton() {
   const [copied, setCopied] = useState(false);
@@ -246,12 +246,14 @@ function HeroSection() {
         <div className="meta-table" style={{ marginBottom: "2rem" }}>
           <span className="meta-label">Author</span>
           <span className="meta-value">Sidney Scott</span>
+          <span className="meta-label">Affiliation</span>
+          <span className="meta-value">The Ashby Institute</span>
           <span className="meta-label">Version</span>
           <span className="meta-value">v1.0</span>
           <span className="meta-label">Contact</span>
           <span className="meta-value">
-            <a href="mailto:sidney@themissingmeter.org" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              sidney@themissingmeter.org
+            <a href="mailto:sidney@theashbyinstitute.org" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              sidney@theashbyinstitute.org
             </a>
           </span>
           <span className="meta-label">PDF</span>
@@ -294,10 +296,11 @@ function HeroSection() {
               Contested and estimated numbers are marked as such, and every figure carries a provenance
               label under the taxonomy of Appendix A.6. The author builds and invests in commercial
               infrastructure informed by this argument, and has drawn on discussions with researchers
-              and investors across the field for feedback on earlier drafts. This site includes the
-              downloadable exhibit data and worked example. The reference implementation, JSON record
-              schema, test suite, trace-replay harness, fitted workload statistics, and sweep outputs
-              are not yet published on this site.
+              and investors across the field for feedback on earlier drafts. The final PDF refers to a
+              reference implementation, record schema, test suite, trace-replay harness, fitted workload
+              statistics, and sweep outputs supplied with the submission. Those ancillary materials have
+              not yet been published on this site; the downloadable materials below are the two exhibit
+              datasets and worked example.
             </p>
           </div>
         </div>
@@ -757,8 +760,8 @@ function Section5() {
         have held for fiber, which became economically obsolete almost immediately after it was
         laid, and which nonetheless transferred to the deployment era at a discount and enabled
         YouTube, AWS, and every streaming service. The question is not whether AI silicon
-        depreciates. Secondary H100 prices fall to 20 to 40 percent of peak within two to three
-        years, based on secondary-market data
+        depreciates. Secondary H100 prices fall to a fraction of peak within two to three years,
+        based on secondary-market data
         <Footnote n={64}>M. Garman (AWS), Cisco AI Summit, February 2026; A. Vahdat (Google), a16z Runtime, October 2025; Silicon Data H100 secondary-market analysis, 2024-2025. No cohort-level utilization series exists as of mid-2026.</Footnote>{" "}
         The question is whether the capacity it represents transfers to the deployment era at a
         discount, and whether the deployment era's value is captured by the silicon or by the layer
@@ -782,21 +785,35 @@ function Section6() {
     <Sec id="section-6">
       <h2>6. The inheritance mechanism</h2>
       <p>
-        The secondary market is already operating. The mechanism by which the deployment era
-        inherits the installation era's capacity is not mysterious: AWS's chief executive stated in
-        January 2026 that AWS has never retired an A100 server and remains sold out of them nearly
-        six years after launch. Google reports full utilization on seven- and eight-year-old TPUs.
-        2017-vintage V100s still rent across more than seventeen providers.
-        <Footnote n={64}>AWS re:Invent 2025, Andy Jassy keynote, December 2025: "We have not retired a single A100." Google Cloud Next 2026, Urs Hölzle: TPU v2 (2017) and v3 (2018) still at full utilization. V100 availability: spot-checked across Lambda, CoreWeave, Vast.ai, RunPod, and 13 additional providers, June 2026.</Footnote>
+        A data center is a stack of depreciation schedules. Land, shells, substations,
+        transmission interconnects, cooling plant, and fiber depreciate over roughly 14 to 40
+        years. Silicon depreciates over 3 to 6 years, but can cascade from frontier training to
+        inference, batch, and embedding workloads. Models depreciate in months. The deployment era
+        can inherit the durable half of the stack and any silicon that still meets a lower-tier
+        workload, but it cannot assume that every accelerator retains a resale market.
       </p>
       <p>
-        The secondary market for AI silicon is already operating; what it lacks is a standard unit
-        in which to price the useful work the silicon delivers. Secondary H100 prices fall to 20–40
-        percent of peak within two to three years
-        <Footnote n={64}>M. Garman (AWS), Cisco AI Summit, February 2026; A. Vahdat (Google), a16z Runtime, October 2025; Silicon Data H100 secondary-market analysis, 2024-2025. No cohort-level utilization series exists as of mid-2026.</Footnote>{" "}
-        but brokers describe the market as structurally opaque; prices and sold-out claims are not utilization rates, and no cohort-level
-        utilization series exists as of mid-2026. The inheritance mechanism works; it cannot be
-        measured; and the inability to measure it is the argument's own evidence.
+        The public record does not yet provide a cohort-level utilization series for GPUs by age.
+        AWS reports that it has not retired an A100 server and remains sold out of them; Google
+        reports full utilization on seven- and eight-year-old TPUs. Prices and sold-out claims are
+        not utilization rates. The final PDF therefore treats second-life clearing as a prediction
+        to be measured, not an established result.
+        <Footnote n={64}>M. Garman (AWS), Cisco AI Summit, February 2026; A. Vahdat (Google), a16z Runtime, October 2025; Silicon Data H100 secondary-market analysis, 2024-2025. No cohort-level utilization series exists as of mid-2026.</Footnote>
+      </p>
+      <AnchorH3 id="s6-credit-market">What the credit market already priced</AnchorH3>
+      <p>
+        Every investment-grade GPU financing on the public record is anchored on contracted
+        delivery rather than hardware liquidation value. CoreWeave's $8.5 billion facility draws
+        as hardware is delivered against specific customer contracts, and its later credit
+        agreement refers repeatedly to GPUs without an appraisal, residual-value, or remarketing
+        framework. Lambda's senior secured facility likewise relies on GPU servers and their cash
+        flows, tied to an investment-grade offtaker and fully amortizing by the end of 2030.
+        <Footnote n={90}>CoreWeave, Inc., press release on the $8.5 billion delayed-draw term loan facility, 31 March 2026, filed as Exhibit 99.1; and CoreWeave DDTL 5.5 Credit Agreement, 7 August 2026. Lambda, “Lambda prices $926 million senior secured term loan B facility,” 12 August 2026, and closing announcement, 27 August 2026.</Footnote>
+      </p>
+      <p>
+        The lender's question is a delivery question: whether an operator can demonstrate useful
+        capacity independently of who happens to be buying this year. That is the missing
+        measurement problem the served-token accounting is intended to address.
       </p>
     </Sec>
   );
@@ -869,7 +886,9 @@ function Section8() {
       <InSectionTOC items={[
         { id: "s8-problem",   label: "The strangest fact about a trillion-dollar industry" },
         { id: "s8-prior-art", label: "The prior art, and which leg each one amputates" },
+        { id: "s8-futures", label: "A futures contract still needs a grade" },
         { id: "s8-calculator", label: "The inversion: same model, opposite rankings" },
+        { id: "s8-production-traces", label: "The unit computed on production traces" },
       ]} />
 
       <AnchorH3 id="s8-problem">The strangest fact about a trillion-dollar industry</AnchorH3>
@@ -911,6 +930,23 @@ function Section8() {
         has three legs: cost, useful output, and a service-level condition. This paper names that
         unit the <strong>served token</strong>, abbreviated <em>svt</em>, and specifies it in
         Appendix A: one output token delivered inside its SLO and above its quality floor.
+      </p>
+
+      <AnchorH3 id="s8-futures">A futures contract still needs a grade</AnchorH3>
+      <p>
+        A liquid compute-futures market would not dispense with a unit. Grain futures reference a
+        graded standard and crude references gravity and sulfur benchmarks. Compute has no such
+        grade, so an early contract can specify its deliverable only by naming hardware or an
+        accelerator-hour, which prices the asset rather than the useful work delivered under a
+        deadline.
+      </p>
+      <p>
+        In August 2026 the Commodity Futures Trading Commission requested comment on compute
+        derivatives, noting that compute may not yet exhibit the fungibility, standardization, and
+        liquidity usually associated with a commodity derivative. CME Group and Silicon Data then
+        announced H100 and B200 Rental Index Futures that settle against hourly GPU rental cost.
+        The emerging contracts price hardware-time. Prediction 9 asks whether the market later
+        adopts a work- or service-level-conditioned grade.
       </p>
 
       <AnchorH3 id="s8-prior-art">The prior art, and which leg each one amputates</AnchorH3>
@@ -988,6 +1024,25 @@ function Section8() {
         its cost per served token is undefined — and wins decisively for the batch workload. Toggle the workload to see the inversion:
       </p>
       <ServedTokenCalculator />
+
+      <AnchorH3 id="s8-production-traces">The unit computed on production traces</AnchorH3>
+      <p>
+        Sections 8.2 and 8.3 are simulated and labeled [SIM]. The final PDF then computes the
+        same quantities on four public production workloads from two operators, totaling 63,824
+        requests: Microsoft conversation and code traces, plus Moonshot long-context and
+        conversation traces. Request counts, arrival times, and token distributions are
+        [MEASURED, THIRD PARTY]; latency and cost are [SIM] because the public traces do not
+        include a deadline or hardware record.
+      </p>
+      <p>
+        On Microsoft traffic at a ten-millisecond deadline, the conversation workload reaches its
+        cost minimum at 15 percent utilization and the code workload at 10 percent, versus the
+        synthetic model's 82.7 percent prediction. Two workloads on identical weights and hardware
+        differ in cost of useful work by 39.5x: $1.06 per million served tokens for conversation
+        and $41.86 for code. The final PDF treats the result as workload-specific evidence for an
+        interior economic optimum, not as a uniform claim that production traffic is always
+        burstier than Poisson.
+      </p>
     </Sec>
   );
 }
@@ -995,11 +1050,12 @@ function Section8() {
 /* ─── Section 9 ─────────────────────────────────────────────────────────────── */
 
 const REQUIREMENTS = [
-  { n: "1", title: "A unit of account with three legs", body: "Cost, verified output, service level: dollars per unit of useful work at a stated latency percentile and quality floor. Defined by an open specification, measurable by independent parties with published methodology, and stated with provenance. The unit that wins will be boring, auditable, and slightly too conservative, because the kWh and the TEU were." },
-  { n: "2", title: "Meters before markets", body: "An instrumentation layer that measures delivered work under real workloads, as distinct from benchmark performance under ideal ones. Load factor's AI analogue — delivered-useful-work over provisioned-capacity — becomes the operator's core metric. The silicon layer has already begun competing on it: new inference architectures marketed in 2026 claim model FLOPs utilization above 80 percent against the 20 to 50 percent GPUs typically deliver, and their designers' framing — that the unit of analysis is the cluster rather than the chip — is the load-factor argument restated in hardware. Measurement is being bought and sold; it is not yet being standardized." },
+  { n: "1", title: "A unit of account with three legs", body: "Cost, verified output, service level: dollars per unit of useful work at a stated latency percentile and quality floor. Defined by an open specification, measurable by independent parties with published methodology, and stated with provenance, since a measured number, a configured number, and a simulated number are different species and must be labeled as such. The unit that wins will be boring, auditable, and slightly too conservative, because the kilowatt-hour, the TEU, and price-per-tpmC were." },
+  { n: "2", title: "Meters before markets", body: "An instrumentation layer that measures delivered work under real workloads, as distinct from benchmark performance under ideal ones. Goodput already supplies the service-level denominator; a billing export and buyer-run quality evaluation complete the join. Load factor's AI analogue, delivered-useful-work over provisioned-capacity, becomes the operator's core metric. New inference architectures marketed in 2026 claim model FLOPs utilization above 80 percent against the 20 to 50 percent GPUs typically deliver, with the cluster rather than the chip as the unit of analysis. Measurement is being bought and sold; it is not yet standardized." },
   { n: "3", title: "Routing as load balancing", body: (<>Once work is metered in a common unit, placement becomes an optimization: which model, which silicon, which region, which batch window, subject to the task's deadline. The demand-diversity arbitrage is now quantified rather than asserted: Mooncake, the serving platform behind Kimi, replayed real traces across twenty nodes in each configuration. Roughly 100 percent of requests met the time-between-tokens objective under the disaggregated placement against 57 percent under the coupled baseline, and the platform served approximately 75 percent more requests within the same objectives<Footnote n={88}>R. Qin et al., “Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving,” arXiv:2407.00079v4, 2025. Production traces (23,608 long-context and 12,031 conversation requests) released at github.com/kvcache-ai/Mooncake. The 75 percent throughput improvement and 100 vs. 57 percent SLO attainment figures are from the replay experiment reported in Section 6 of that paper.</Footnote> — identical spend, identical silicon, a 1.75-fold difference in compliant work, produced entirely by placement. Dollars per GPU-hour is exactly equal across that comparison. The served token is the quantity in which the difference is denominated.</>) },
   { n: "4", title: "Honest depreciation, denominated in the unit", body: "Assets carried at the value of the useful work they can still deliver, disclosed by asset class rather than blended. This is the answer to Burry that the hyperscalers cannot currently give, because giving it requires the meter." },
-  { n: "5", title: "Protocols owned by no one", body: "The coordination layer is only valuable if it is universal, and only universal if no one owns it. The historical instruction is uniform: interchange worked because Hock's consortium prevented any member from owning the rules; TCP/IP beat better-funded proprietary stacks because it had no owner to distrust." },
+  { n: "5", title: "Protocols owned by no one", body: "The MCP-to-foundation move is the correct template. Interchange worked because Hock's consortium prevented any member from owning the rules; TCP/IP beat better-funded proprietary alternatives because it had no owner to distrust. Any unit of account or measurement standard that one vendor controls will fail on arrival for the same reason." },
+  { n: "6", title: "An energy axis, measured now, priced later", body: "The natural second denominator is joules per compliant token. Energy is already being measured at every scale, while ISO/IEC 21031:2024 supplies a rate over a practitioner-declared functional unit. The term is deferred from this first specification rather than invented without a multi-party standard." },
 ];
 
 function Section9() {
@@ -1070,7 +1126,7 @@ function Section10() {
         { id: "pred-p9", label: "P9 - Contract references the grade" },
       ]} />
       <p>
-        A thesis that cannot lose is not a thesis. Nine dated, checkable predictions, with the
+        A thesis that cannot lose is not a thesis. Dated, checkable predictions, with the
         conditions under which this paper is wrong. Prediction 3 is currently half met.
       </p>
       <PredictionScoreboard />
@@ -1084,38 +1140,32 @@ function Section11() {
   return (
     <Sec id="section-11">
       <h2>11. The implication, stated in full</h2>
-      <p>
-        The Transformer paper closed by noting the authors were excited to apply attention to other
-        tasks, eight sentences before the architecture that would reorganize a trillion dollars of
-        capital. Underclaiming is the characteristic failure of correct papers, so, against that
-        precedent, the implication of this one stated without hedge:
-      </p>
       <blockquote>
         <p>
-          If the pattern holds, the most valuable layer in artificial intelligence will not be the
-          models and will not be the chips. It will be the layer that measures, prices, and routes
-          intelligence as work: the interchange, the meter, and the dispatcher, fused. That layer
-          does not exist yet. Its unit does not exist yet. The protocols beneath it arrived in the
-          last eighteen months, the buyers began demanding it this year, and every prior
-          infrastructure cycle produced exactly one such layer, within a decade of its turning
-          point, operated by an institution that did not exist at the peak of the frenzy.
+          If the pattern holds and its boundary condition is satisfied, the most valuable layer in
+          artificial intelligence will not be the models and will not be the chips. It will be the
+          layer that measures, prices, and routes intelligence as work: the interchange, the meter,
+          and the dispatcher, fused. That layer does not exist yet. Its unit does not exist yet for
+          this domain, though it has existed for four decades in another. The protocols beneath it
+          arrived in the last eighteen months, the buyers began demanding it this year, and every
+          prior infrastructure cycle produced exactly one such layer within a decade of its turning
+          point.
         </p>
       </blockquote>
       <p>
-        Visa's predecessor was founded in 1970, twelve years after the Fresno drop, in the wreckage
-        of the card mania. AWS launched in 2006, six years after the NASDAQ peak, on hardware
-        economics the crash created. The equivalent institution for intelligence is being founded,
-        by someone, now.
+        The boundary condition of Section 2.1 says what would have to be true for that to happen.
+        The physical layer must stay contestable, which it currently is: fifteen providers serve one
+        open-weight artifact at an 8.6-fold price spread. And the coordination function must be
+        standardized before it can be bundled, which is undecided. Semiconductor fabrication shows
+        what happens when the first condition fails. Cloud computing shows what happens when the
+        second does. AI inference in 2026 has not yet failed either, and the window in which that
+        remains true is the window this paper is about.
       </p>
       <p>
-        The historical record adds one more regularity, and it is the one this document exists to
-        exploit: at every prior turning point there was a memo. The proposal marked "vague but
-        exciting," the internal warning about a tidal wave, the nine pages from a pseudonym. None
-        of them were early; Berners-Lee wrote fifteen years after TCP/IP's design, Satoshi
-        twenty-six years after Chaum's first digital-cash paper, and it did not matter, because the
-        leverage was never in being first to the technology. It was in being first to state, plainly
-        and falsifiably, which layer the value was about to move to, and to build the boring
-        instrument that let everyone else see it move.
+        Railways got a clearing house. Power got a meter. Freight got a box. Money got interchange.
+        Packets got a protocol. Databases, quietly and without anyone outside the field noticing,
+        got price-per-tpmC in 1988, with an auditor, a disclosure report, and a three-year cost
+        basis, and have been able to answer what a transaction costs ever since.
       </p>
       <p style={{ fontWeight: 500, color: "var(--ink)" }}>
         Railways got a clearing house. Power got a meter. Freight got a box. Money got interchange.
@@ -1132,6 +1182,11 @@ function Section11() {
         borderTop: "1px solid var(--rule)",
       }}>
         Intelligence gets a meter next. The only open questions are whose, and whether it is neutral before it is bundled.
+      </p>
+      <p style={{ fontSize: "12px", color: "var(--ink-light)", fontStyle: "italic", marginTop: "2rem" }}>
+        This draft is circulated for comment. The author thanks Xin Wang for the observation that
+        mature-node fabrication capacity rotates to lower-tier demand rather than merely retiring,
+        and for pointing to regulated compute futures as a complementary top-down instrument.
       </p>
     </Sec>
   );
@@ -1240,7 +1295,7 @@ function AppendixA() {
         { id: "appendix-a10", label: "A.10 What this specification excludes" },
       ]} />
       <p>
-        <em>Status: draft for public comment. This appendix is deliberately boring. The kilowatt-hour is boring. That is what made it work.</em>
+        <em>Status: draft for public comment. This appendix is deliberately boring. The kilowatt-hour is boring. Price-per-tpmC is boring. That is what made them work.</em>
       </p>
 
       <ProvenanceLegend />
@@ -1251,18 +1306,21 @@ function AppendixA() {
         order: the unit must denominate what the buyer buys rather than what the seller owns; two
         parties with the same inputs must compute the same number; every number must carry its
         provenance; and no single vendor may control the definition. The unit is designed to be
-        computed today from data that already exists.
+        computed today from data that already exists, and the worked example in A.9 does so.
       </p>
 
       <h3 id="appendix-a2" style={{ scrollMarginTop: "110px" }}>A.2 Definitions</h3>
       <p>
         A <strong>task</strong> is a request with a defined acceptable output. A{" "}
-        <strong>quality floor</strong> is the acceptance test for that output, declared before
-        measurement. A <strong>service-level objective (SLO)</strong> is the latency contract under
+        <strong>quality floor</strong> is an operational acceptance test, declared before
+        measurement: an evaluation threshold, task-completion check, programmatic assertion,
+        human-rating floor, or reference-accuracy bound. Identifying the model artifact is not a
+        quality floor. A <strong>service-level objective (SLO)</strong> is the latency contract under
         which output has value, stated as percentile bounds on time-to-first-token (TTFT) and
-        time-per-output-token (TPOT). <strong>Compliant work</strong> is output that passes the
-        quality floor and meets every term of the SLO. Output that fails either is not discounted
-        work; it is zero work that was paid for.
+        time-per-output-token (TPOT), or their task-level equivalents, over a declared window.
+        <strong>Compliant work</strong> is output that passes the quality floor and meets every term
+        of the objective. Output that fails either is not discounted work; it is zero work that was
+        paid for. Retried requests count their full spend and only their final compliant output.
       </p>
 
       <h3 id="appendix-a3" style={{ scrollMarginTop: "110px" }}>A.3 The unit</h3>
@@ -1299,29 +1357,36 @@ function AppendixA() {
         of delivered quantity and W may be denominated in millions of compliant output tokens. One
         served token (SVT) is one output token delivered inside its service-level objective and
         above its quality floor. Units: dollars per million served tokens ($/MSVT). This is the
-        right form for the routing question of where to place a fixed artifact.
+        right form for the routing question of where to place a fixed artifact, and it is the
+        question of the worked example in A.9.
       </p>
       <p>
         <strong>The commensurability rule.</strong> Token-denominated cost is defined within one
         artifact class and undefined across artifact classes. Any comparison spanning artifacts
         must be denominated in compliant tasks. A ranking of dollars per million served tokens
-        across different models is an error, not a conservative approximation. The reference
-        implementation raises an exception rather than returning a cross-artifact token ranking.
+        across different models is not a conservative approximation; it is the error this
+        specification exists to correct. Under a token denominator a model that pads its answer
+        lowers its apparent cost, while under a task denominator padding raises S and leaves W
+        unchanged. The reference implementation raises an exception rather than returning a
+        cross-artifact token ranking.
       </p>
 
       <h3 id="appendix-a4" style={{ scrollMarginTop: "110px" }}>A.4 The conditioning tuple</h3>
       <p>
         A value of C is non-conforming and undefined unless stated with all six of: (1) workload
-        — the trace or trace-class measured; (2) model artifact — weights, version, quantization,
-        and tokenizer, explicitly; (3) placement — provider or self-host, silicon, region, batching
-        policy, and offered load; (4) service-level objective — the percentile bounds, stated
-        numerically; (5) quality floor — the acceptance test, stated operationally, with the
-        evaluated fraction; and (6) window — start, end, and sustained load, with figures reported
+        — the trace or trace-class measured, including arrival pattern and input and output length
+        distributions; (2) model artifact — weights, version, quantization, and tokenizer,
+        explicitly, which also governs A.3's commensurability rule; (3) placement — provider or
+        self-host, silicon, region, batching policy, and offered load; (4) service-level objective
+        — the percentile bounds, stated numerically; (5) quality floor — the acceptance test,
+        stated operationally, with the evaluated fraction; and (6) window — start, end, and
+        sustained load, with figures reported
         at declared percentiles. The window must be long relative to the system's own response time
         and stationary within itself. A conforming record reports window length divided by measured
         p99 request latency, and a split-half comparison of C over the first and second halves.
         Where the halves differ by more than ten percent, the window is non-stationary, C describes
-        a transient rather than a placement, and the record is marked accordingly.
+        a transient rather than a placement, and the record is marked accordingly. This makes the
+        number reproducible by an independent observer rather than a burst artifact.
       </p>
       <h3 id="appendix-a5" style={{ scrollMarginTop: "110px" }}>A.5 Pre-registration rule</h3>
       <p>
@@ -1340,18 +1405,20 @@ function AppendixA() {
         derived figure carries the weakest label among its inputs. The red line: a comparison
         between placements may be labeled measured only if every side of it is measured; a measured
         number divided by a simulated one is a simulation, and presenting it otherwise is the
-        accounting fog reproduced at the level of a single line item.
+        accounting fog reproduced at the level of a single line item. The taxonomy is an auditable
+        five-level simplification of the Type A and Type B distinction in JCGM 100:2008.
       </p>
       <h3 id="appendix-a7" style={{ scrollMarginTop: "110px" }}>A.7 Conforming record</h3>
       <p>
         A conforming measurement is publishable as one row: the six-field tuple, S, W, C, the
         provenance label of each, and the measuring party. Three further fields are required: an
-        interval on C (derived from the Wilson score interval on the compliance rate, propagated
-        through the reciprocal — a record reporting C as a scalar is non-conforming); a sensitivity
-        curve sweeping the objective across a declared range and reporting compliance and C at each
-        point; and a margin to the objective (the ratio of measured percentile to bound, for
-        time-to-first-token and time-per-output-token — a placement compliant at 0.99 of its bound
-        and one compliant at 0.40 report the same C and are not the same asset).
+        interval on C, derived from the Wilson score interval on the compliance rate and propagated
+        through the reciprocal because compliance can sit near zero or one; a record reporting C as
+        a scalar is non-conforming. A sensitivity curve sweeps the objective across a declared range
+        and reports compliance and C at each point. A margin to the objective is the ratio of
+        measured percentile to bound, for time-to-first-token and time-per-output-token. A placement
+        compliant at 0.99 of its bound and one compliant at 0.40 report the same C and are not the
+        same asset.
       </p>
       <SensitivityCurve />
       <h3 id="appendix-a8" style={{ scrollMarginTop: "110px" }}>A.8 Governance</h3>
@@ -1368,11 +1435,14 @@ function AppendixA() {
 
       <h3 id="appendix-a9" style={{ scrollMarginTop: "110px" }}>A.9 Worked example, entirely from public data</h3>
       <p>
-        The same open-weight model (Llama 3.3 Instruct 70B) is served by 15 providers. The public
-        price spread is 8.6×: $0.12 per million blended tokens at the cheapest (fp8 quantized)
-        to $1.05 at the most expensive. Throughput spreads further: 15.2 tokens per second at the
-        cheapest against 329.6 tokens per second at the fastest. Expand each step below to follow
-        the tuple from declaration to C.
+        All figures in this example are [SPEC] for prices and [MEASURED, THIRD PARTY] for latency
+        and throughput, from public provider benchmarks accessed in July 2026. The figures are
+        trailing-72-hour medians, so the example is illustrative at p50 rather than a fully
+        conforming p99 record. The same open-weight model (Llama 3.3 Instruct 70B) is served by 15
+        providers. The public price spread is 8.6×: $0.12 per million blended tokens at the cheapest
+        fp8-quantized artifact to $1.05 at the highest. Throughput spreads from 15.2 tokens per
+        second at the cheapest to 329.6 at the fastest. Expand each step below to follow the tuple
+        from declaration to C.
       </p>
       <WorkedExampleAccordion />
       <p>
