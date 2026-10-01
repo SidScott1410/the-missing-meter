@@ -57,17 +57,18 @@ function isCompliant(provider: typeof PROVIDERS[0], workload: typeof WORKLOADS[0
   return provider.tps >= workload.minTps;
 }
 
-function cheapestCompliant(workload: typeof WORKLOADS[0]): typeof PROVIDERS[0] | null {
+function cheapestCompliant(workload: typeof WORKLOADS[0]): typeof PROVIDERS[0][] {
   const compliant = PROVIDERS.filter((p) => isCompliant(p, workload));
-  if (compliant.length === 0) return null;
-  return compliant.reduce((a, b) => (a.pricePerMtok < b.pricePerMtok ? a : b));
+  if (compliant.length === 0) return [];
+  const lowestPrice = Math.min(...compliant.map((p) => p.pricePerMtok));
+  return compliant.filter((p) => p.pricePerMtok === lowestPrice);
 }
 
 export default function ServedTokenCalculator() {
   const [activeWorkload, setActiveWorkload] = useState<string>("interactive");
 
   const workload = WORKLOADS.find((w) => w.id === activeWorkload)!;
-  const winner = cheapestCompliant(workload);
+  const winners = cheapestCompliant(workload);
 
   return (
     <div
@@ -192,7 +193,7 @@ export default function ServedTokenCalculator() {
 
         {PROVIDERS.map((p) => {
           const compliant = isCompliant(p, workload);
-          const isWinner = winner?.name === p.name;
+          const isWinner = winners.some((winner) => winner.name === p.name);
           return (
             <div
               key={p.name}
@@ -303,7 +304,7 @@ export default function ServedTokenCalculator() {
             display: "block",
             marginBottom: "0.2rem",
           }}>
-            Inversion factor
+            {activeWorkload === "interactive" ? "Inversion factor" : "Market price spread"}
           </span>
           <span style={{ fontSize: "20px", fontWeight: 700, color: "var(--ink)", letterSpacing: "-0.02em" }}>
             {activeWorkload === "interactive" ? "5.3×" : "8.6×"}
@@ -324,7 +325,7 @@ export default function ServedTokenCalculator() {
           flex: "1 1 200px",
         }}>
           {activeWorkload === "interactive"
-            ? "Provider A wins on $/Mtok. Under the SLO it delivers zero compliant output — its cost per served token is undefined. The fastest provider at $0.64 is the cheapest compliant placement."
+            ? "Provider A wins on $/Mtok. Under the SLO it delivers zero compliant output, so its cost per served token is undefined. Providers K and N tie at $0.64/MSVT; N has the larger margin to the objective."
             : "Every provider is compliant. Provider A wins by 5.3×. The interactive buyer's premium placement is paying 21.7× the speed for a deadline that cannot use it."}
         </p>
       </div>

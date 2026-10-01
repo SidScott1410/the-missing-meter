@@ -294,9 +294,10 @@ function HeroSection() {
               Contested and estimated numbers are marked as such, and every figure carries a provenance
               label under the taxonomy of Appendix A.6. The author builds and invests in commercial
               infrastructure informed by this argument, and has drawn on discussions with researchers
-              and investors across the field for feedback on earlier drafts. The reference implementation,
-              the record schema, the test suite, and the code for every computed exhibit are included
-              as ancillary files with this submission.
+              and investors across the field for feedback on earlier drafts. This site includes the
+              downloadable exhibit data and worked example. The reference implementation, JSON record
+              schema, test suite, trace-replay harness, fitted workload statistics, and sweep outputs
+              are not yet published on this site.
             </p>
           </div>
         </div>
@@ -373,7 +374,7 @@ function ArticleLayout() {
           {/* ── Named section: The Predictions ── */}
           <NamedSectionHeader
             id="the-predictions"
-            label="Eight predictions"
+            label="Nine predictions"
           />
           <Section10 />
 
@@ -556,13 +557,18 @@ function Section1() {
         not exist during the buildout.
       </p>
       <p>
-        This paper makes three claims. First, the pattern is real: five prior infrastructures
+        This paper makes four claims. First, the pattern is real: five prior infrastructures
         followed the same four-phase arc, and the mechanism that drives the arc is visible in AI
-        today. Second, the strongest objection — that AI capital depreciates too fast for the
-        pattern to hold — is partially correct and must be answered rather than dismissed; the
-        answer changes what to build, not whether the transition occurs. Third, the binding
-        constraint on the efficiency era is now measurement: AI is the first trillion-dollar
-        infrastructure that cannot yet state, in a standard unit, what its output costs.
+        today. The pattern also has a boundary condition, stated in Section 2, and two of the five
+        cases sit on the far side of it. Second, the strongest objection, that AI capital depreciates
+        too fast for the pattern to hold, is partially correct and must be answered rather than
+        dismissed; the answer changes what to build, not whether the transition occurs. Third, the
+        binding constraint on the efficiency era is now measurement. AI is not the first
+        trillion-dollar infrastructure that lacks a unit for its output; it is the first that has one
+        available, in an adjacent domain, and has not adopted it. Fourth, once such a unit is
+        specified with care, it forces two facts into the open that no current metric can express:
+        the cost of useful work has an interior optimum in offered load, and the industry's standard
+        telemetry cannot resolve the latency bounds its most valuable workloads are sold against.
       </p>
     </Sec>
   );
@@ -637,7 +643,7 @@ function Section2() {
           {
             label: "Exhibit 2 — Unit Cost Curves",
             title: "Unit cost indexed to turning point — five infrastructure cycles",
-            caption: "Unit cost indexed to 100 at each infrastructure turning point. AI inference decline (94.8%/yr) is the steepest in recorded infrastructure history. Sources: Crafts (2004); Joskow (1997); Downes & Nolan (2017); Artificial Analysis (2025).",
+            caption: "Unit cost indexed to 100 at each infrastructure turning point. AI inference decline (94.8%/yr) is the steepest in recorded infrastructure history. Sources: Stanford AI Index (2025); Crafts (2004); Joskow (1997); Levinson (2006); Historical Statistics of the United States; Norton / DrPeering.",
             content: <Exhibit2Chart />,
           },
         ]}
@@ -751,11 +757,12 @@ function Section5() {
         have held for fiber, which became economically obsolete almost immediately after it was
         laid, and which nonetheless transferred to the deployment era at a discount and enabled
         YouTube, AWS, and every streaming service. The question is not whether AI silicon
-        depreciates — it does, at roughly 50–70 percent of value in the first two years based on
-        secondary-market data
-        <Footnote n={22}>Secondary H100 SXM5 pricing data from Vast.ai marketplace and CoreWeave secondary listings, January 2024 to June 2026. H100s purchased at $30,000–$35,000 in Q1 2023 were trading at $9,000–$14,000 by Q2 2025, a 55–70% decline in 24–27 months.</Footnote>{" "}
-        — but whether the capacity it represents transfers to the deployment era at a discount, and
-        whether the deployment era's value is captured by the silicon or by the layer above it.
+        depreciates. Secondary H100 prices fall to 20 to 40 percent of peak within two to three
+        years, based on secondary-market data
+        <Footnote n={64}>M. Garman (AWS), Cisco AI Summit, February 2026; A. Vahdat (Google), a16z Runtime, October 2025; Silicon Data H100 secondary-market analysis, 2024-2025. No cohort-level utilization series exists as of mid-2026.</Footnote>{" "}
+        The question is whether the capacity it represents transfers to the deployment era at a
+        discount, and whether the deployment era's value is captured by the silicon or by the layer
+        above it.
       </p>
       <p>
         The depreciation dispute is, in fact, the paper's own argument wearing different clothes.
@@ -785,8 +792,9 @@ function Section6() {
       <p>
         The secondary market for AI silicon is already operating; what it lacks is a standard unit
         in which to price the useful work the silicon delivers. Secondary H100 prices fall to 20–40
-        percent of peak within two to three years, but brokers describe the market as structurally
-        opaque — prices and sold-out claims are not utilization rates, and no cohort-level
+        percent of peak within two to three years
+        <Footnote n={64}>M. Garman (AWS), Cisco AI Summit, February 2026; A. Vahdat (Google), a16z Runtime, October 2025; Silicon Data H100 secondary-market analysis, 2024-2025. No cohort-level utilization series exists as of mid-2026.</Footnote>{" "}
+        but brokers describe the market as structurally opaque; prices and sold-out claims are not utilization rates, and no cohort-level
         utilization series exists as of mid-2026. The inheritance mechanism works; it cannot be
         measured; and the inability to measure it is the argument's own evidence.
       </p>
@@ -1048,7 +1056,7 @@ function Section9() {
 function Section10() {
   return (
     <Sec id="section-10">
-            <h2>10. Eight predictions</h2>
+            <h2>10. Nine predictions</h2>
       <InSectionTOC items={[
         { id: "pred-p1", label: "P1 — Open-weight token share" },
         { id: "pred-p2", label: "P2 — The unit emerges" },
@@ -1059,9 +1067,10 @@ function Section10() {
         { id: "pred-p6", label: "P6 — Routing becomes a line item" },
         { id: "pred-p7", label: "P7 — The value migration itself" },
         { id: "pred-p8", label: "P8 — The measurement bus learns to see" },
+        { id: "pred-p9", label: "P9 - Contract references the grade" },
       ]} />
       <p>
-        A thesis that cannot lose is not a thesis. Eight dated, checkable predictions, with the
+        A thesis that cannot lose is not a thesis. Nine dated, checkable predictions, with the
         conditions under which this paper is wrong. Prediction 3 is currently half met.
       </p>
       <PredictionScoreboard />
@@ -1258,10 +1267,9 @@ function AppendixA() {
 
       <h3 id="appendix-a3" style={{ scrollMarginTop: "110px" }}>A.3 The unit</h3>
       <p>
-        The cost of useful work over a window is measured in <strong>served tokens (svt)</strong>,
-        the unit this paper proposes. One served token is one output token delivered within the
-        stated SLO and above the quality floor; a token emitted late, or wrong, is not a served
-        token. The cost of useful work is then:
+        The cost of useful work over a window is C = S / W, where S is total spend attributable to
+        the workload in the window, including failed and retried requests, and W is compliant work
+        delivered.
       </p>
       <div style={{
         background: "var(--surface-dark)",
@@ -1273,11 +1281,33 @@ function AppendixA() {
         color: "var(--paper)",
         lineHeight: 1.7,
       }}>
-        <p style={{ margin: "0 0 0.5rem" }}>cost_per_svt = total_spend / served_tokens</p>
-        <p style={{ margin: "0 0 0.5rem", color: "rgba(245,242,238,0.6)" }}>where:</p>
-        <p style={{ margin: "0 0 0.25rem", paddingLeft: "1rem" }}>served_tokens = Σ(output_tokens_i × compliant_i)</p>
+        <p style={{ margin: "0 0 0.5rem" }}>C = S / W</p>
+        <p style={{ margin: "0 0 0.5rem", color: "rgba(245,242,238,0.6)" }}>fixed-artifact sub-case:</p>
+        <p style={{ margin: "0 0 0.25rem", paddingLeft: "1rem" }}>W = Σ(output_tokens_i × compliant_i)</p>
         <p style={{ margin: 0, paddingLeft: "1rem" }}>compliant_i = 1 iff quality_i ≥ floor AND latency_i ≤ SLO</p>
       </div>
+      <p>
+        W is denominated in <strong>compliant tasks</strong>. A compliant task is one request with a
+        defined acceptable output that passed its quality floor and met every term of its
+        service-level objective. Units: dollars per compliant task. This is the primary form and
+        the only form comparable across model artifacts, because the number of output tokens a
+        model emits to complete a task is chosen by the seller.
+      </p>
+      <p>
+        The served token is the sub-case. Where the model artifact is held fixed, with the same
+        weights, version, quantization, and tokenizer, output token counts become a stable measure
+        of delivered quantity and W may be denominated in millions of compliant output tokens. One
+        served token (SVT) is one output token delivered inside its service-level objective and
+        above its quality floor. Units: dollars per million served tokens ($/MSVT). This is the
+        right form for the routing question of where to place a fixed artifact.
+      </p>
+      <p>
+        <strong>The commensurability rule.</strong> Token-denominated cost is defined within one
+        artifact class and undefined across artifact classes. Any comparison spanning artifacts
+        must be denominated in compliant tasks. A ranking of dollars per million served tokens
+        across different models is an error, not a conservative approximation. The reference
+        implementation raises an exception rather than returning a cross-artifact token ranking.
+      </p>
 
       <h3 id="appendix-a4" style={{ scrollMarginTop: "110px" }}>A.4 The conditioning tuple</h3>
       <p>

@@ -232,7 +232,7 @@ export default function SixClaims() {
         borderLeft: "2px solid var(--rule)",
         lineHeight: 1.6,
       }}>
-        Sections 8 through 10 defend each claim. Appendix A specifies the unit. Predictions 1 through 8 are the paper's full falsification surface, each dated.
+        Sections 8 through 10 defend each claim. Appendix A specifies the unit. Predictions 1 through 9 are the paper's full falsification surface, each dated.
       </p>
     </div>
   );

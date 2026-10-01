@@ -1,4 +1,4 @@
-// PredictionScoreboard — eight dated predictions with live status
+// PredictionScoreboard — nine dated predictions with live status
 // Status, note, and last_updated are loaded from /predictions-status.json at runtime.
 // To update a prediction: edit client/public/predictions-status.json — no code changes needed.
 // Each card is collapsed by default; click to expand claim + kill criterion.
@@ -46,7 +46,7 @@ const PREDICTIONS_BASE = [
   {
     id: "P2b",
     title: "The original unit as written",
-    deadline: "End-2029",
+    deadline: "End-2028",
     claim: "At least one open, multi-party specification for cost-of-useful-work-under-service-level published with measurement methodology and adopted by at least two major clouds or serving frameworks in pricing or disclosure.",
     killCriterion: "If compute is still overwhelmingly transacted in raw GPU-hours with no work-denominated unit in commercial use by end-2029, the central claim of this paper fails on its own kill criterion.",
   },
@@ -54,7 +54,7 @@ const PREDICTIONS_BASE = [
     id: "P3",
     title: "Depreciation converges downward",
     deadline: "End-2028",
-    claim: "At least two of the five largest AI spenders disclose shortened or asset-class-segmented depreciation schedules for AI silicon.",
+    claim: "Baseline: one mover, four extenders, and no segmented accelerator asset class. By end-2028, at least two of the five largest AI spenders disclose shortened or asset-class-segmented depreciation schedules for AI silicon.",
     killCriterion: "Outright absence by end-2028 would indicate the accounting fog can outlast the cycle.",
   },
   {
@@ -91,6 +91,13 @@ const PREDICTIONS_BASE = [
     deadline: "End-2027",
     claim: "OpenTelemetry's generative-AI semantic conventions either reach stable status with per-request latency expressible on spans, or revise the default explicit bucket boundaries for the gen_ai.server.time_per_output_token histogram to resolve bounds below ten milliseconds. Baseline: SemConv v1.40.0, April 2026 (Development status).",
     killCriterion: "Failure indicates the standard telemetry bus remains unable to measure the service class the interactive market is actually buying, which would slow every prediction above it. This is the smallest concrete change any existing body could make in the direction of this paper's argument — its cost is one line in a configuration file.",
+  },
+  {
+    id: "P9",
+    title: "The contract references the grade",
+    deadline: "End-2028",
+    claim: "By end-2028, at least one regulated compute-futures contract, or a settlement index it references, specifies its deliverable by a work- or service-level-conditioned floor rather than by named hardware alone.",
+    killCriterion: "A liquid compute-futures market clears on hardware-hour proxies with no quality- or service-level-conditioned grade by end-2030.",
   },
 ];
 
@@ -137,7 +144,7 @@ function PredictionCard({ p, isLast }: { p: Prediction; isLast: boolean }) {
 
   return (
     <div
-      id={`scoreboard-${p.id.toLowerCase()}`}
+      id={`pred-${p.id.toLowerCase()}`}
       style={{
         borderBottom: isLast ? "none" : "1px solid var(--rule)",
         background: p.status === "Half met"
@@ -314,7 +321,7 @@ function PredictionCard({ p, isLast }: { p: Prediction; isLast: boolean }) {
 
 export default function PredictionScoreboard() {
   const [overrides, setOverrides] = useState<StatusConfig | null>(null);
-  const [lastUpdated, setLastUpdated] = useState("July 31, 2026");
+  const [lastUpdated, setLastUpdated] = useState("October 1, 2026");
 
   useEffect(() => {
     fetch(withBase("predictions-status.json"))
