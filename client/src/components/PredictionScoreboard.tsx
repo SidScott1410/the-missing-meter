@@ -16,14 +16,15 @@ const STATUS_STYLES: Record<string, { bg: string; color: string; border: string 
 // Map prediction IDs to relevant appendix anchors for kill-criterion links
 const APPENDIX_LINKS: Record<string, { href: string; label: string }[]> = {
   P1:  [],
-  P2:  [{ href: "/#appendix-a3", label: "A.3 Token denominator" }, { href: "/#appendix-a7", label: "A.7 Sensitivity curve" }],
-  P2b: [{ href: "/#appendix-a1", label: "A.1 The unit" }, { href: "/#appendix-a8", label: "A.8 Governance" }],
+  P2:  [{ href: withBase("#appendix-a3"), label: "A.3 The unit" }, { href: withBase("#appendix-a7"), label: "A.7 Conforming record" }],
+  P2b: [{ href: withBase("#appendix-a1"), label: "A.1 Scope and design goals" }, { href: withBase("#appendix-a8"), label: "A.8 Governance" }],
   P3:  [],
   P4:  [],
   P5:  [],
-  P6:  [{ href: "/#appendix-a9", label: "A.9 Worked example" }],
-  P7:  [{ href: "/#appendix-a3", label: "A.3 Token denominator" }],
-  P8:  [{ href: "/#appendix-a7", label: "A.7 Sensitivity curve" }, { href: "/#appendix-a2", label: "A.2 Quality floor" }],
+  P6:  [{ href: withBase("#appendix-a9"), label: "A.9 Worked example" }],
+  P7:  [{ href: withBase("#appendix-a3"), label: "A.3 The unit" }],
+  P8:  [{ href: withBase("#appendix-a7"), label: "A.7 Conforming record" }, { href: withBase("#appendix-a2"), label: "A.2 Definitions" }],
+  P9:  [{ href: withBase("#appendix-a3"), label: "A.3 The unit" }],
 };
 
 // Static prediction definitions — claim text and kill criterion never change.
@@ -38,9 +39,9 @@ const PREDICTIONS_BASE = [
   },
   {
     id: "P2",
-    title: "The unit emerges (prior art path)",
+    title: "The unit is born, or a close call is consummated",
     deadline: "End-2028",
-    claim: "The unit resolves through prior art: MLCommons adds a cost denominator to the MLPerf Inference Server scenario (already subject to p99 latency bounds and reference-accuracy floors), or TPC adds a per-request tail-latency constraint to TPCx-AI (which already reports $/AIUCpm@SF under audited pricing rules). Either counts as confirmation rather than refutation.",
+    claim: "The unit resolves through prior art: MLCommons adds a cost denominator to the MLPerf Inference Server scenario (already subject to p99 latency bounds and reference-accuracy floors), or TPC adds a per-request tail-latency constraint to TPCx-AI (which already reports $/AIUCpm@SF under audited pricing rules). The Tokenomics Foundation, launched by the Linux Foundation in August 2026, is a third body with a charter to standardize AI cost measurement and extend FOCUS billing with token telemetry. Each path counts as confirmation rather than refutation.",
     killCriterion: "Neither MLCommons nor TPC moves in this direction by end-2028.",
   },
   {
@@ -52,9 +53,9 @@ const PREDICTIONS_BASE = [
   },
   {
     id: "P3",
-    title: "Depreciation converges downward",
+    title: "Downward convergence of depreciation",
     deadline: "End-2028",
-    claim: "Baseline: one mover, four extenders, and no segmented accelerator asset class. By end-2028, at least two of the five largest AI spenders disclose shortened or asset-class-segmented depreciation schedules for AI silicon.",
+    claim: "By end-2028, two of the five largest AI spenders file abbreviated or asset-class-segmented depreciation schedules for AI silicon. Baseline: one mover, four extenders, and no segmented accelerator asset class.",
     killCriterion: "Outright absence by end-2028 would indicate the accounting fog can outlast the cycle.",
   },
   {
@@ -68,12 +69,12 @@ const PREDICTIONS_BASE = [
     id: "P5",
     title: "Second-life silicon clears",
     deadline: "Through 2029",
-    claim: "Cascaded GPUs (first-generation-behind) sustain secondary-market utilization above ~60% for inference workloads.",
+    claim: "Cascaded GPUs one generation behind sustain secondary-market utilization above roughly 60 percent for inference workloads. The prediction concerns redeployment to a lower tier as well as secondary sale.",
     killCriterion: "Cascaded silicon scraps instead of clearing. If no cohort-level utilization series exists by end-2027, the prediction is unscorable and is counted against the thesis, not for it.",
   },
   {
     id: "P6",
-    title: "Routing becomes a line item",
+    title: "Routing is a line item",
     deadline: "End-2027",
     claim: "Model-routing or inference-optimization appears as a named budget category in mainstream enterprise IT surveys.",
     killCriterion: "Failure is a timing miss, not a falsification.",
@@ -96,8 +97,8 @@ const PREDICTIONS_BASE = [
     id: "P9",
     title: "The contract references the grade",
     deadline: "End-2028",
-    claim: "By end-2028, at least one regulated compute-futures contract, or a settlement index it references, specifies its deliverable by a work- or service-level-conditioned floor rather than by named hardware alone.",
-    killCriterion: "A liquid compute-futures market clears on hardware-hour proxies with no quality- or service-level-conditioned grade by end-2030.",
+    claim: "By end-2028, at least one regulated compute-futures contract, or a settlement index it references, specifies its deliverable by a work- or service-level-conditioned floor, including throughput and a latency bound at stated quality, rather than by named hardware alone. Baseline: the first regulated compute-futures contracts reference hardware-time.",
+    killCriterion: "A liquid compute-futures market clears on hardware-hour proxies with no quality- or service-level-conditioned grade by end-2030. A market that prices the asset indefinitely counts against the thesis.",
   },
 ];
 
@@ -347,8 +348,10 @@ export default function PredictionScoreboard() {
     };
   });
 
-  const openCount = predictions.filter((p) => p.status === "Open").length;
-  const metCount  = predictions.filter((p) => p.status === "Met" || p.status === "Half met").length;
+  // P2b is an explicit sub-prediction of P2, not a tenth numbered prediction.
+  const numberedPredictions = predictions.filter((p) => /^P\d+$/.test(p.id));
+  const openCount = numberedPredictions.filter((p) => p.status === "Open").length;
+  const metCount  = numberedPredictions.filter((p) => p.status === "Met" || p.status === "Half met").length;
 
   return (
     <div style={{ margin: "2rem 0" }}>
@@ -393,7 +396,7 @@ export default function PredictionScoreboard() {
             fontFamily: "'JetBrains Mono', monospace",
             letterSpacing: "0.04em",
           }}>
-            Last updated: {lastUpdated} · {predictions.length} predictions
+            Last updated: {lastUpdated} · {numberedPredictions.length} predictions
           </span>
           {metCount > 0 && (
             <span style={{

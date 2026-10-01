@@ -28,7 +28,7 @@ const STEPS: Step[] = [
     label: "Step 2 — State the service-level objective",
     buyer1: "TTFT ≤ 1.0 s · sustained output ≥ 100 tok/s (voice playback floor)",
     buyer2: "Complete within 12 hours · no per-token latency floor",
-    note: "The SLO is the condition that determines whether a token was worth anything at all. A voice reply arriving in 4 s is a refund. A batch job finishing in 11 h 59 m is a success.",
+    note: "The SLO is the condition that determines whether a token was worth anything at all. A voice reply arriving in 4 seconds is a refund. A batch job finishing in 11 hours 59 minutes is a success.",
   },
   {
     id: "step-spend",
@@ -271,8 +271,8 @@ export default function WorkedExampleAccordion() {
         color: "var(--ink-light)",
         fontStyle: "italic",
       }}>
-        All figures [SPEC] for prices, [MEASURED, THIRD PARTY] for latency/throughput from public benchmarks.
-        This example uses p50 medians; a fully conforming record requires the declared percentile (typically p99).
+        All figures are [SPEC] for prices and [MEASURED, THIRD PARTY] for latency and throughput from public benchmarks.
+        This example uses trailing-72-hour p50 medians; a fully conforming record requires the declared percentile, typically p99.
       </div>
     </div>
   );

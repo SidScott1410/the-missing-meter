@@ -31,7 +31,7 @@
     {
       "id": "P5",
       "status": "Open",
-      "note": "Baseline: AWS CEO stated in January 2026 that AWS has never retired an A100 server and remains sold out of them. Google reports full utilization on seven- and eight-year-old TPUs. Against that, secondary H100 prices fall to a fraction of peak within two to three years and brokers describe the market as structurally opaque. No public, systematic measurement of GPU utilization by age cohort exists as of mid-2026 — which is itself the paper's measurement argument in a different form."
+      "note": "Baseline: AWS stated in January 2026 that it has never retired an A100 server and remains sold out of them. Google reports full utilization on seven- and eight-year-old TPUs. Public used-GPU transaction data records sales, not utilization. A compute-index administrator reports A100 occupancy averaging about 80 percent over a five-year term window, but no public cohort-level utilization series exists as of mid-2026. The prediction remains unscorable as written."
     },
     {
       "id": "P6",
