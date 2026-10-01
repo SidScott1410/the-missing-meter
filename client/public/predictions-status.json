@@ -1,7 +1,7 @@
 {
   "_comment": "Edit this file to update prediction statuses without touching component code.",
   "_status_values": ["Open", "Half met", "Met", "Failed"],
-  "_last_updated": "2026-07-31",
+  "_last_updated": "2026-10-01",
   "predictions": [
     {
       "id": "P1",
@@ -21,7 +21,7 @@
     {
       "id": "P3",
       "status": "Half met",
-      "note": "Amazon cut servers from six years to five, effective January 2025, citing the accelerated pace of technology development in AI — at a cost of ~$0.7B of 2025 operating income. Alphabet, Microsoft, Meta, and Oracle most recently extended. One of the two required movers exists; no company yet reports accelerators as a segmented asset class, and four of five most recently moved in the opposite direction."
+      "note": "Baseline: Amazon shortened servers from six years to five, effective January 2025, citing AI and reducing 2025 operating income by about $0.7B. Alphabet, Microsoft, Meta, and Oracle most recently extended. One mover exists, four are extenders, and no company reports accelerators as a segmented asset class."
     },
     {
       "id": "P4",
@@ -45,6 +45,11 @@
     },
     {
       "id": "P8",
+      "status": "Open",
+      "note": null
+    },
+    {
+      "id": "P9",
       "status": "Open",
       "note": null
     }

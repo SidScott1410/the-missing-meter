@@ -1,4 +1,4 @@
-// ReproduceSection — data-provenance manifest
+// ReproduceSection - data-provenance manifest
 // "Every figure in this paper is computed from public data. Here is the data."
 // Three download slots: Exhibit 1 CSV, Exhibit 2 CSV, worked-example walkthrough
 // Design: audit-signal aesthetic, monospace, instrument-panel feel
@@ -21,8 +21,8 @@ const ARTIFACTS = [
   {
     id: "exhibit-2-csv",
     label: "Exhibit 2",
-    title: "Unit cost indexed to turning point — five infrastructure cycles",
-    description: "Unit cost series for railways (Crafts 2004), electricity (Joskow 1997), shipping (Levinson 2006), telecom (Odlyzko 2003), and AI inference (Artificial Analysis 2025). Indexed to 100 at each infrastructure's turning point. 85 rows, 8 columns.",
+    title: "Unit cost indexed to turning point - five infrastructure cycles",
+    description: "Unit cost series for railways (Crafts 2004), electricity (Joskow 1997), shipping (Levinson 2006), telecom (Odlyzko 2003), and AI inference (Stanford AI Index 2025). Indexed to 100 at each infrastructure's turning point. 85 rows, 8 columns.",
     format: "CSV",
     rows: "85 rows",
     icon: <Table size={16} />,
@@ -67,7 +67,7 @@ export default function ReproduceSection() {
           margin: "0 0 1rem",
           lineHeight: 1.2,
         }}>
-          Every figure in this paper is computed from public data. Here is the data.
+          Public materials for the exhibits and worked example
         </h2>
         <p style={{
           fontSize: "15px",
@@ -77,9 +77,11 @@ export default function ReproduceSection() {
           margin: 0,
           fontFamily: "Inter, system-ui, sans-serif",
         }}>
-          The three artifacts below are the complete provenance chain for every exhibit and every
-          quantitative claim in the paper. No proprietary data, no model access, no API keys.
-          The inversion in Fig. 3 can be reproduced in a spreadsheet in under ten minutes.
+          The three downloadable artifacts below support the public exhibits and worked example. No
+          proprietary data, model access, or API keys are required. The inversion in Fig. 3 can be
+          reproduced in a spreadsheet in under ten minutes. The reference implementation, JSON
+          record schema, test suite, trace-replay harness, fitted workload statistics, and sweep
+          outputs are not yet published on this site.
         </p>
       </div>
 

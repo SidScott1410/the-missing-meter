@@ -158,7 +158,7 @@ export default function DepreciationTable() {
           marginBottom: 0,
         }}
       >
-        Table 2. Hyperscaler depreciation schedules. Four of five largest AI spenders have moved toward shorter useful-life assumptions since 2023. Source: property and equipment notes, most recent Form 10-K filings, SEC EDGAR [63].
+        Table 2. Hyperscaler depreciation schedules. Only Amazon has shortened useful lives, citing AI; the other four most recently extended them. Source: property and equipment notes, most recent Form 10-K filings, SEC EDGAR [63].
       </p>
     </div>
   );

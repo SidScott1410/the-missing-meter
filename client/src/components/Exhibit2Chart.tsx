@@ -129,7 +129,7 @@ export default function Exhibit2Chart() {
         marginBottom: 0,
       }}>
         Unit cost indexed to 100 at each infrastructure turning point. AI inference decline (94.8%/yr) is the steepest
-        in recorded infrastructure history. Sources: Crafts (2004); Joskow (1997); Downes &amp; Nolan (2017); Artificial Analysis (2025).
+        in recorded infrastructure history. Sources: Stanford AI Index (2025); Crafts (2004); Joskow (1997); Levinson (2006); Historical Statistics of the United States; Norton / DrPeering.
       </p>
     </div>
   );
