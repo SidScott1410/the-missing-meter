@@ -4,15 +4,15 @@
 // Brand motif: meter tick marks in the wordmark
 
 import { useState } from "react";
-import { Link } from "wouter";
 import { Menu, X, Download } from "lucide-react";
 import { withBase } from "@/lib/asset";
 
 const NAV_LINKS = [
-  { label: "Abstract", href: "#abstract" },
-  { label: "Exhibits", href: "#exhibits" },
-  { label: "Predictions", href: "#the-predictions" },
-  { label: "Appendix", href: "#appendix" },
+  { label: "Abstract", href: withBase("#abstract") },
+  { label: "Exhibits", href: withBase("#exhibits") },
+  { label: "Predictions", href: withBase("#the-predictions") },
+  { label: "Appendix", href: withBase("#appendix") },
+  { label: "Research", href: withBase("publications/") },
 ];
 
 // Meter mark motif — 5 calibration ticks with the middle one "missing" (amber)
@@ -54,15 +54,14 @@ export default function SiteNav() {
     <header className="site-nav">
       <div className="nav-inner">
         {/* Wordmark with meter motif */}
-        <Link
-          href="/"
+        <a
+          href={withBase("")}
           className="wordmark"
           style={{ display: "flex", alignItems: "center" }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <MeterMark />
           The Missing Meter
-        </Link>
+        </a>
 
         {/* Desktop nav — hidden on mobile */}
         <nav

@@ -1,0 +1,31 @@
+# The Missing Meter
+
+The Missing Meter is a research paper by Sidney Scott, The Ashby Institute.
+
+## Canonical pages
+
+- Full paper: https://themissingmeter.org/
+- Publications index: https://themissingmeter.org/publications/
+- Publication record: https://themissingmeter.org/publications/the-missing-meter/
+- Materials: https://themissingmeter.org/materials/
+- Machine-readable publications listing: https://themissingmeter.org/publications.json
+- Final PDF: https://themissingmeter.org/downloads/The_Missing_Meter.pdf
+
+## Current publication
+
+- Title: The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks
+- Author: Sidney Scott
+- Affiliation: The Ashby Institute
+- Version: v1.0
+- First published: 2026-07-15
+- Latest revision: 2026-10-01
+- Abstract: AI is the first trillion-dollar infrastructure buildout that cannot yet state, in a standard unit, what its output costs. This paper proposes the served token as a unit of account for AI inference, conditioned on a stated service-level objective and quality floor.
+
+## Downloadable materials
+
+- Final paper PDF
+- Exhibit 1 CSV: hyperscaler capex versus inference cost
+- Exhibit 2 CSV: unit cost across five infrastructure cycles
+- Worked-example PDF: served-token inversion across 15 providers
+
+The final PDF refers to additional ancillary submission materials. Those materials are not yet published on the site.

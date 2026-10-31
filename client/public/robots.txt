@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://themissingmeter.org/sitemap.xml
+# Machine-readable publication listing: https://themissingmeter.org/publications.json
+# Research-site guide: https://themissingmeter.org/llms.txt

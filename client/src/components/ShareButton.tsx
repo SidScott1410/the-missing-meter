@@ -6,7 +6,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { Share2, Twitter, Linkedin, Link, Mail, Check, X as XIcon } from "lucide-react";
 
-const SITE_URL = "https://missingmeter-uiqqchx2.manus.space";
+const SITE_URL = "https://themissingmeter.org/";
 const SHARE_TITLE = "The Missing Meter — What every infrastructure buildout leaves behind, and the unit AI still lacks";
 const SHARE_TEXT = "AI is the first trillion-dollar infrastructure that cannot yet state, in a standard unit, what its output costs. A new paper by Sidney Scott.";
 
@@ -324,4 +324,3 @@ const iconBtnStyle: React.CSSProperties = {
   fontSize: "13px",
   cursor: "pointer",
 };
-

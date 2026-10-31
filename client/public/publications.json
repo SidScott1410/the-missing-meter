@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "updated": "2026-10-31",
+  "site": "https://themissingmeter.org",
+  "publications_url": "https://themissingmeter.org/publications/",
+  "publications": [
+    {
+      "@type": "ScholarlyArticle",
+      "id": "the-missing-meter",
+      "title": "The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks",
+      "author": {
+        "name": "Sidney Scott",
+        "affiliation": "The Ashby Institute",
+        "email": "sidney@theashbyinstitute.org"
+      },
+      "version": "v1.0",
+      "datePublished": "2026-07-15",
+      "dateModified": "2026-10-01",
+      "url": "https://themissingmeter.org/publications/the-missing-meter/",
+      "html": "https://themissingmeter.org/",
+      "pdf": "https://themissingmeter.org/downloads/The_Missing_Meter.pdf",
+      "abstract": "AI is the first trillion-dollar infrastructure buildout that cannot yet state, in a standard unit, what its output costs. This paper proposes the served token as a unit of account for AI inference, conditioned on a stated service-level objective and quality floor.",
+      "materials": [
+        {
+          "label": "Exhibit 1 data",
+          "format": "CSV",
+          "url": "https://themissingmeter.org/downloads/exhibit1_scissors.csv"
+        },
+        {
+          "label": "Exhibit 2 data",
+          "format": "CSV",
+          "url": "https://themissingmeter.org/downloads/exhibit2_served_token.csv"
+        },
+        {
+          "label": "Worked example",
+          "format": "PDF",
+          "url": "https://themissingmeter.org/downloads/worked_example.pdf"
+        }
+      ]
+    }
+  ]
+}

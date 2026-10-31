@@ -61,8 +61,10 @@ export default function Home() {
       <SiteNav />
       <SectionNav />
       <MobileTOC />
-      <HeroSection />
-      <ArticleLayout />
+      <main>
+        <HeroSection />
+        <ArticleLayout />
+      </main>
       <SiteFooter />
       <ScrollToTop />
     </div>
