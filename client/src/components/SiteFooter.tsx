@@ -58,10 +58,10 @@ export default function SiteFooter() {
           <div>
             <div style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-light)", marginBottom: "0.6rem" }}>Paper</div>
             {[
-              { label: "Abstract", href: "#abstract" },
-              { label: "Exhibits", href: "#exhibits" },
-              { label: "Predictions", href: "#predictions" },
-              { label: "Appendix", href: "#appendix" },
+              { label: "Abstract", href: withBase("#abstract") },
+              { label: "Exhibits", href: withBase("#exhibits") },
+              { label: "Predictions", href: withBase("#the-predictions") },
+              { label: "Appendix", href: withBase("#appendix") },
             ].map((l) => (
               <a key={l.label} href={l.href} style={{ display: "block", fontSize: "13px", color: "var(--ink-mid)", textDecoration: "none", marginBottom: "0.3rem" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ink)")}
@@ -73,6 +73,8 @@ export default function SiteFooter() {
             <div style={{ fontSize: "10px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-light)", marginBottom: "0.6rem" }}>Resources</div>
             {[
               { label: "Download PDF", href: withBase("downloads/The_Missing_Meter.pdf") },
+              { label: "Publications", href: withBase("publications/") },
+              { label: "Materials", href: withBase("materials/") },
               { label: "Contact Author", href: "mailto:sidney@theashbyinstitute.org" },
               { label: "DOI: pending", href: "#" },
             ].map((l) => (

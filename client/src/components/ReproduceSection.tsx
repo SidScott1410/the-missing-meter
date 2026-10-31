@@ -82,7 +82,8 @@ export default function ReproduceSection() {
           be reproduced in a spreadsheet in under ten minutes. The final PDF refers to a reference
           implementation, record schema, test suite, trace-replay harness, fitted workload
           statistics, and sweep outputs supplied with the submission. Those ancillary materials are
-          not yet published on this site.
+          not yet published on this site. A standalone, crawler-readable listing of this paper and
+          its public materials is available at <a href={withBase("publications/")} style={{ color: "var(--amber-dark)", textUnderlineOffset: "3px" }}>Publications</a>.
         </p>
       </div>
 

@@ -7,15 +7,15 @@ import { Router } from "wouter";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Home from "./pages/Home";
+import App from "./App";
 
-export function render() {
+export function render(path = "/") {
   return renderToString(
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
-          <Router ssrPath="/">
-            <Home />
+          <Router ssrPath={path}>
+            <App />
           </Router>
         </TooltipProvider>
       </ThemeProvider>

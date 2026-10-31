@@ -1,5 +1,5 @@
 {
-  "_comment": "Edit this file to update prediction statuses without touching component code.",
+  "_comment": "Edit this source file to update prediction statuses, then rebuild the static site.",
   "_status_values": ["Open", "Half met", "Met", "Failed"],
   "_last_updated": "2026-10-01",
   "predictions": [

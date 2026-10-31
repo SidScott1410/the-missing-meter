@@ -1,10 +1,12 @@
-// PredictionScoreboard — nine dated predictions with live status
-// Status, note, and last_updated are loaded from /predictions-status.json at runtime.
-// To update a prediction: edit client/public/predictions-status.json — no code changes needed.
+// PredictionScoreboard — nine dated predictions with static status
+// Status, note, and last_updated are bundled at build time, so the full scorecard
+// is present in the initial HTML without a browser fetch.
+// To update a prediction: edit client/src/data/predictions-status.json and rebuild.
 // Each card is collapsed by default; click to expand claim + kill criterion.
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { withBase } from "@/lib/asset";
+import statusSnapshot from "@/data/predictions-status.json";
 
 const STATUS_STYLES: Record<string, { bg: string; color: string; border: string }> = {
   "Open":     { bg: "var(--surface)", color: "var(--ink-mid)", border: "var(--rule)" },
@@ -113,6 +115,17 @@ interface StatusOverride {
 interface StatusConfig {
   _last_updated?: string;
   predictions: StatusOverride[];
+}
+
+const STATIC_STATUS = statusSnapshot as StatusConfig;
+
+function formatLastUpdated(value?: string): string {
+  if (!value) return "October 1, 2026";
+  return new Date(`${value}T00:00:00`).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 function StatusBadge({ status }: { status: Status }) {
@@ -321,26 +334,12 @@ function PredictionCard({ p, isLast }: { p: Prediction; isLast: boolean }) {
 }
 
 export default function PredictionScoreboard() {
-  const [overrides, setOverrides] = useState<StatusConfig | null>(null);
-  const [lastUpdated, setLastUpdated] = useState("October 1, 2026");
-
-  useEffect(() => {
-    fetch(withBase("predictions-status.json"))
-      .then((r) => r.json())
-      .then((data: StatusConfig) => {
-        setOverrides(data);
-        if (data._last_updated) {
-          // Format ISO date as "Month D, YYYY"
-          const d = new Date(data._last_updated + "T00:00:00");
-          setLastUpdated(d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }));
-        }
-      })
-      .catch(() => { /* silently fall back to defaults */ });
-  }, []);
+  const [overrides] = useState<StatusConfig>(STATIC_STATUS);
+  const lastUpdated = formatLastUpdated(overrides._last_updated);
 
   // Merge static base with runtime overrides
   const predictions: Prediction[] = PREDICTIONS_BASE.map((base) => {
-    const ov = overrides?.predictions.find((o) => o.id === base.id);
+    const ov = overrides.predictions.find((o) => o.id === base.id);
     return {
       ...base,
       status: (ov?.status ?? "Open") as Status,
