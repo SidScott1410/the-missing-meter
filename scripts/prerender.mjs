@@ -28,7 +28,7 @@ const ROUTES = [
       "@type": "ScholarlyArticle",
       headline: "The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks",
       description: "AI is the first trillion-dollar infrastructure buildout that cannot yet state, in a standard unit, what its output costs. This paper proposes the served token as the missing unit of account for AI inference.",
-      author: { "@type": "Person", name: "Sidney Scott", email: "sidney@theashbyinstitute.org", affiliation: { "@type": "Organization", name: "The Ashby Institute" } },
+      author: { "@type": "Person", name: "Sidney Scott", email: "sidney@reckonresearch.com", affiliation: { "@type": "Organization", name: "The Ashby Institute" } },
       datePublished: "2026-07-15",
       dateModified: "2026-10-31",
       url: `${siteOrigin}/`,

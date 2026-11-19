@@ -75,7 +75,7 @@ export default function SiteFooter() {
               { label: "Download PDF", href: withBase("downloads/The_Missing_Meter.pdf") },
               { label: "Publications", href: withBase("publications/") },
               { label: "Materials", href: withBase("materials/") },
-              { label: "Contact Author", href: "mailto:sidney@theashbyinstitute.org" },
+              { label: "Contact Author", href: "mailto:sidney@reckonresearch.com" },
               { label: "DOI: pending", href: "#" },
             ].map((l) => (
               <a key={l.label} href={l.href} style={{ display: "block", fontSize: "13px", color: "var(--ink-mid)", textDecoration: "none", marginBottom: "0.3rem" }}

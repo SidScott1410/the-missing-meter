@@ -254,8 +254,8 @@ function HeroSection() {
           <span className="meta-value">v1.0</span>
           <span className="meta-label">Contact</span>
           <span className="meta-value">
-            <a href="mailto:sidney@theashbyinstitute.org" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
-              sidney@theashbyinstitute.org
+            <a href="mailto:sidney@reckonresearch.com" style={{ color: "var(--ink)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              sidney@reckonresearch.com
             </a>
           </span>
           <span className="meta-label">PDF</span>
