@@ -300,8 +300,8 @@ function HeroSection() {
               infrastructure informed by this argument, and has drawn on discussions with researchers
               and investors across the field for feedback on earlier drafts. The final PDF refers to a
               reference implementation, record schema, test suite, trace-replay harness, fitted workload
-              statistics, and sweep outputs supplied with the submission. Those ancillary materials have
-              not yet been published on this site; the downloadable materials below are the two exhibit
+              statistics, and sweep outputs supplied with the submission. Those ancillary materials are
+              now published on this site, in the companion artifact below, alongside the two exhibit
               datasets and worked example.
             </p>
           </div>

@@ -40,6 +40,17 @@ const ARTIFACTS = [
     href: withBase("downloads/worked_example.pdf"),
     filename: "worked_example.pdf",
   },
+  {
+    id: "companion-artifact",
+    label: "Companion artifact",
+    title: "Served-token reference implementation and reproduction code",
+    description: "Reference implementation (svt.py), JSON Schema v0.2.0 for a conforming record, a 33-test suite, the trace-replay harness, fitted workload statistics, and the Exhibit 3 and 4 sweep outputs. Appendix A materials. Reproduces the Appendix A.9 inversion.",
+    format: "ZIP",
+    rows: "18 files",
+    icon: <FileText size={16} />,
+    href: withBase("downloads/materials/served-token-companion.zip"),
+    filename: "served-token-companion.zip",
+  },
 ];
 
 export default function ReproduceSection() {
@@ -77,12 +88,12 @@ export default function ReproduceSection() {
           margin: 0,
           fontFamily: "Inter, system-ui, sans-serif",
         }}>
-          The three downloadable artifacts below support the public exhibits and worked example. No
+          The four downloadable artifacts below support the public exhibits and worked example. No
           proprietary data, model access, or API keys are required. The Appendix A.9 inversion can
           be reproduced in a spreadsheet in under ten minutes. The final PDF refers to a reference
           implementation, record schema, test suite, trace-replay harness, fitted workload
           statistics, and sweep outputs supplied with the submission. Those ancillary materials are
-          not yet published on this site. A standalone, crawler-readable listing of this paper and
+          now published on this site, in the companion artifact below. A standalone, crawler-readable listing of this paper and
           its public materials is available at <a href={withBase("publications/")} style={{ color: "var(--amber-dark)", textUnderlineOffset: "3px" }}>Publications</a>.
         </p>
       </div>
