@@ -1,6 +1,6 @@
 # The Missing Meter
 
-The Missing Meter is a research paper by Sidney Scott, The Ashby Institute.
+The Missing Meter is a research paper by Sidney Scott, Reckon Research.
 
 ## Canonical pages
 
@@ -15,7 +15,7 @@ The Missing Meter is a research paper by Sidney Scott, The Ashby Institute.
 
 - Title: The Missing Meter: What every infrastructure buildout leaves behind, and the unit AI still lacks
 - Author: Sidney Scott
-- Affiliation: The Ashby Institute
+- Affiliation: Reckon Research
 - Version: v1.0
 - First published: 2026-07-15
 - Latest revision: 2026-10-01
