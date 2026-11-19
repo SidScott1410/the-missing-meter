@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-10-31",
+  "updated": "2026-11-19",
   "site": "https://themissingmeter.org",
   "publications_url": "https://themissingmeter.org/publications/",
   "publications": [
@@ -15,7 +15,7 @@
       },
       "version": "v1.0",
       "datePublished": "2026-07-15",
-      "dateModified": "2026-10-01",
+      "dateModified": "2026-11-19",
       "url": "https://themissingmeter.org/publications/the-missing-meter/",
       "html": "https://themissingmeter.org/",
       "pdf": "https://themissingmeter.org/downloads/The_Missing_Meter.pdf",
@@ -35,6 +35,11 @@
           "label": "Worked example",
           "format": "PDF",
           "url": "https://themissingmeter.org/downloads/worked_example.pdf"
+        },
+        {
+          "label": "Companion artifact (reference implementation, schema, 33-test suite, trace-replay harness, fitted statistics, sweep outputs)",
+          "format": "ZIP",
+          "url": "https://themissingmeter.org/downloads/materials/served-token-companion.zip"
         }
       ]
     }
