@@ -1,0 +1,14 @@
+{
+  "draws": 2000,
+  "providers": 15,
+  "winner_changes_median": 4.0,
+  "winner_changes_p05_p95": [
+    2.0,
+    6.0
+  ],
+  "share_of_draws_with_any_inversion": 1.0,
+  "first_inversion_floor_tok_s_median": 15.789473684210526,
+  "largest_single_step_jump_in_C_median_pct": 178.09254103044796,
+  "largest_single_step_jump_in_C_p95_pct": 396.2538264655854,
+  "provenance": "SIM (twelve of fifteen providers reconstructed)"
+}

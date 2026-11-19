@@ -1,0 +1,144 @@
+{
+  "spec_version": "0.2.0",
+  "measuring_party": {
+    "name": "The Ashby Institute",
+    "independent_of_vendor": true
+  },
+  "conditioning_tuple": {
+    "workload": {
+      "trace_class": "interactive-voice-agent-replay",
+      "arrival_pattern": "replayed_production",
+      "input_tokens_p50": 200,
+      "output_tokens_p50": 500,
+      "pre_registered": true
+    },
+    "model_artifact": {
+      "artifact_class_id": "llama-3.3-70b-fp8",
+      "weights": "Llama-3.3-70B-Instruct",
+      "version": "3.3",
+      "quantization": "fp8",
+      "tokenizer_id": "llama-bpe"
+    },
+    "placement": {
+      "provider": "provider-x",
+      "self_hosted": false,
+      "silicon": "H100-SXM",
+      "region": "us-east",
+      "batching_policy": "continuous-batching",
+      "offered_load_rps": 4.0
+    },
+    "slo": {
+      "percentile": 99,
+      "ttft_ms_max": 1000,
+      "tpot_ms_max": 10,
+      "task_deadline_s_max": null
+    },
+    "quality_floor": {
+      "test_type": "task_completion_check",
+      "test_id": "voice-intent-v3",
+      "threshold": 0.95,
+      "evaluated_fraction": 1.0
+    },
+    "window": {
+      "start": "2026-07-12T00:00:00",
+      "end": "2026-07-12T01:00:00",
+      "sustained_load_rps": 4.0,
+      "duration_over_p99_latency": 1058.82,
+      "stationarity": {
+        "first_half_C": 0.699454,
+        "second_half_C": 0.699454,
+        "relative_delta": 0.0,
+        "passes": true,
+        "threshold": 0.1
+      }
+    }
+  },
+  "spend": {
+    "value": 0.128,
+    "provenance": "MEASURED",
+    "units": "USD",
+    "source": "FOCUS BilledCost"
+  },
+  "work": {
+    "denominator": "compliant_output_tokens_millions",
+    "value": 0.183,
+    "provenance": "MEASURED",
+    "compliance_rate": 0.915,
+    "compliance_ci95": [
+      0.883567,
+      0.938537
+    ],
+    "billed_units": 0.2,
+    "wasted_units": 0.017
+  },
+  "cost_of_useful_work": {
+    "value": 0.699454,
+    "units": "USD_per_Msvt",
+    "provenance": "MEASURED",
+    "ci95": [
+      0.681912,
+      0.724337
+    ],
+    "cross_artifact_comparable": false,
+    "margin_to_slo": {
+      "ttft_ratio": 0.575,
+      "tpot_ratio": 0.6899
+    }
+  },
+  "slo_sensitivity": {
+    "swept_parameter": "tpot_ms_max",
+    "points": [
+      {
+        "bound": 4,
+        "compliance_rate": 0.0,
+        "C": null
+      },
+      {
+        "bound": 5,
+        "compliance_rate": 0.0,
+        "C": null
+      },
+      {
+        "bound": 6,
+        "compliance_rate": 0.485,
+        "C": 1.319588
+      },
+      {
+        "bound": 7,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      },
+      {
+        "bound": 8,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      },
+      {
+        "bound": 10,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      },
+      {
+        "bound": 15,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      },
+      {
+        "bound": 25,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      },
+      {
+        "bound": 40,
+        "compliance_rate": 0.915,
+        "C": 0.699454
+      }
+    ]
+  },
+  "attribution": {
+    "reserved_share_C": 0.349727,
+    "token_share_C": 0.244809,
+    "basis": "reserved_share"
+  },
+  "notes": "Synthetic window; latency and quality drawn from a documented generator. [SIM]"
+}

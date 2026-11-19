@@ -54,9 +54,12 @@ export default function Materials() {
         <section aria-labelledby="availability-heading" style={{ borderTop: "1px solid var(--rule)", marginTop: "3rem", paddingTop: "2rem" }}>
           <h2 id="availability-heading" style={sectionTitleStyle}>Availability note</h2>
           <p style={bodyStyle}>
-            The published materials are the final paper, two exhibit datasets, and the worked example.
-            The final PDF refers to additional ancillary submission materials, including a reference
-            implementation and trace-replay harness. Those files are not yet published on this site.
+            The published materials are the final paper, two exhibit datasets, the worked example, and
+            the companion artifact referred to in the Disclosure, Section 8.4, and Appendix A: the
+            reference implementation, the record schema, the test suite, the trace-replay harness, and
+            the code and outputs behind every computed exhibit. The test suite passes 33 of 33.
+            Reproducing Section 8.4 also requires the four public operator traces, which the companion
+            README links; they are not redistributed here.
           </p>
         </section>
       </main>

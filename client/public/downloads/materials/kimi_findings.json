@@ -1,0 +1,68 @@
+{
+  "slo": {
+    "ttft_max_s": 30.0,
+    "note": "Mooncake declared SLOs for real workloads"
+  },
+  "workloads": {
+    "kimi-longcontext": {
+      "requests": 23608,
+      "duration_s": 3600.0,
+      "mean_rate_rps": 6.5578,
+      "interarrival_cv": 0.0005,
+      "index_of_dispersion": 15.02,
+      "context_tokens_p50": 6345,
+      "context_tokens_p99": 61615,
+      "generated_tokens_p50": 30,
+      "generated_tokens_p99": 897,
+      "generated_tokens_mean": 182.1,
+      "provenance": "MEASURED",
+      "engineering_capacity_rps": 1.941
+    },
+    "kimi-conversation": {
+      "requests": 12031,
+      "duration_s": 3537.0,
+      "mean_rate_rps": 3.4015,
+      "interarrival_cv": 0.0002,
+      "index_of_dispersion": 7.894,
+      "context_tokens_p50": 6909,
+      "context_tokens_p99": 85400,
+      "generated_tokens_p50": 350,
+      "generated_tokens_p99": 1118,
+      "generated_tokens_mean": 342.6,
+      "provenance": "MEASURED",
+      "engineering_capacity_rps": 1.31
+    }
+  },
+  "economic_capacity": {
+    "kimi-longcontext@50ms": {
+      "load_factor": 0.65,
+      "C_min_usd_per_Msvt": 3.452,
+      "compliance_at_optimum": 0.4129
+    },
+    "kimi-longcontext@100ms": {
+      "load_factor": 0.8,
+      "C_min_usd_per_Msvt": 2.8033,
+      "compliance_at_optimum": 0.4612
+    },
+    "kimi-longcontext@200ms": {
+      "load_factor": 0.9,
+      "C_min_usd_per_Msvt": 2.2234,
+      "compliance_at_optimum": 0.6166
+    },
+    "kimi-conversation@50ms": {
+      "load_factor": 0.65,
+      "C_min_usd_per_Msvt": 2.6371,
+      "compliance_at_optimum": 0.7314
+    },
+    "kimi-conversation@100ms": {
+      "load_factor": 0.8,
+      "C_min_usd_per_Msvt": 2.0952,
+      "compliance_at_optimum": 0.7693
+    },
+    "kimi-conversation@200ms": {
+      "load_factor": 0.9,
+      "C_min_usd_per_Msvt": 1.6519,
+      "compliance_at_optimum": 0.9047
+    }
+  }
+}

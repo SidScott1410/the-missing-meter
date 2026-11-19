@@ -1,0 +1,63 @@
+{
+  "model": "M/M/1 FCFS [SIM]",
+  "mu_rps": 10.0,
+  "output_tokens": 500,
+  "rent_usd_per_hr": 2.35,
+  "cases": [
+    {
+      "tpot_ms_max": 3.0,
+      "deadline_s": 1.5,
+      "engineering_capacity_rps": 10.0,
+      "economic_capacity_rps": 8.27,
+      "load_factor": 0.827,
+      "C_min_usd_per_Msvt": 0.1706,
+      "compliance_at_optimum": 0.9254,
+      "C_at_95pct_engineering_capacity": 0.2605,
+      "penalty_for_running_at_95pct": 1.527
+    },
+    {
+      "tpot_ms_max": 4.0,
+      "deadline_s": 2.0,
+      "engineering_capacity_rps": 10.0,
+      "economic_capacity_rps": 8.55,
+      "load_factor": 0.855,
+      "C_min_usd_per_Msvt": 0.1616,
+      "compliance_at_optimum": 0.9449,
+      "C_at_95pct_engineering_capacity": 0.2174,
+      "penalty_for_running_at_95pct": 1.345
+    },
+    {
+      "tpot_ms_max": 6.0,
+      "deadline_s": 3.0,
+      "engineering_capacity_rps": 10.0,
+      "economic_capacity_rps": 8.894,
+      "load_factor": 0.8894,
+      "C_min_usd_per_Msvt": 0.1523,
+      "compliance_at_optimum": 0.9638,
+      "C_at_95pct_engineering_capacity": 0.1769,
+      "penalty_for_running_at_95pct": 1.161
+    },
+    {
+      "tpot_ms_max": 10.0,
+      "deadline_s": 5.0,
+      "engineering_capacity_rps": 10.0,
+      "economic_capacity_rps": 9.23,
+      "load_factor": 0.923,
+      "C_min_usd_per_Msvt": 0.1445,
+      "compliance_at_optimum": 0.9787,
+      "C_at_95pct_engineering_capacity": 0.1497,
+      "penalty_for_running_at_95pct": 1.036
+    },
+    {
+      "tpot_ms_max": 20.0,
+      "deadline_s": 10.0,
+      "engineering_capacity_rps": 10.0,
+      "economic_capacity_rps": 9.544,
+      "load_factor": 0.9544,
+      "C_min_usd_per_Msvt": 0.1382,
+      "compliance_at_optimum": 0.9895,
+      "C_at_95pct_engineering_capacity": 0.1384,
+      "penalty_for_running_at_95pct": 1.001
+    }
+  ]
+}

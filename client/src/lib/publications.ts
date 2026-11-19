@@ -20,7 +20,7 @@ export type MaterialRecord = {
   label: string;
   title: string;
   description: string;
-  format: "PDF" | "CSV";
+  format: "PDF" | "CSV" | "ZIP" | "PY" | "JSON";
   details: string;
   path: string;
 };
@@ -75,6 +75,36 @@ export const PUBLICATION_MATERIALS: MaterialRecord[] = [
     format: "CSV",
     details: "85 rows · 8 columns",
     path: "/downloads/exhibit2_served_token.csv",
+  },
+  {
+    id: "companion-archive",
+    label: "Companion artifact",
+    title: "Reference implementation, schema, test suite, and exhibit code",
+    description:
+      "The reference implementation of the served token, the JSON Schema for a conforming record, the 33-test suite, the trace-replay harness, and the code and outputs behind every computed exhibit. Referred to in the Disclosure, Section 8.4, and Appendix A.",
+    format: "ZIP",
+    details: "18 files",
+    path: "/downloads/served-token-companion.zip",
+  },
+  {
+    id: "svt-reference",
+    label: "Reference implementation",
+    title: "svt.py, the served-token reference implementation",
+    description:
+      "Consumes OpenTelemetry gen_ai span attributes and FinOps FOCUS cost rows and emits a validated record. Enforces commensurability refusal, provenance inheritance, and the quality floor in code rather than prose.",
+    format: "PY",
+    details: "26 KB",
+    path: "/downloads/materials/svt.py",
+  },
+  {
+    id: "record-schema",
+    label: "Schema",
+    title: "served-token-record.schema.json",
+    description:
+      "JSON Schema v0.2.0 for a conforming record, written so that an unconditioned number cannot be serialized. Appendix A.7.",
+    format: "JSON",
+    details: "10 KB",
+    path: "/downloads/materials/served-token-record.schema.json",
   },
   {
     id: "worked-example",

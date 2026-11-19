@@ -1,0 +1,125 @@
+{
+  "provenance_note": "Arrivals and token counts MEASURED from AzureLLMInferenceDataset2023 (CC-BY). Latency SIM from a continuous-batching replay. Derived cost figures inherit SIM under Appendix A.6 inheritance.",
+  "serving_model": {
+    "prefill_tokens_per_s": 20000.0,
+    "decode_step_s": "0.008 + 0.00035*batch",
+    "max_batch": 64,
+    "rent_usd_per_hr": 2.35
+  },
+  "workloads": {
+    "conversation": {
+      "requests": 19366,
+      "duration_s": 3501.7,
+      "mean_rate_rps": 5.5304,
+      "interarrival_cv": 1.0942,
+      "index_of_dispersion": 1.386,
+      "context_tokens_p50": 1020,
+      "context_tokens_p99": 4142,
+      "generated_tokens_p50": 129,
+      "generated_tokens_p99": 601,
+      "generated_tokens_mean": 211.1,
+      "provenance": "MEASURED",
+      "engineering_capacity_rps": 6.359,
+      "native_trace_rps": 5.53
+    },
+    "code": {
+      "requests": 8819,
+      "duration_s": 3435.9,
+      "mean_rate_rps": 2.5667,
+      "interarrival_cv": 13.1513,
+      "index_of_dispersion": 13.182,
+      "context_tokens_p50": 1469,
+      "context_tokens_p99": 7436,
+      "generated_tokens_p50": 13,
+      "generated_tokens_p99": 251,
+      "generated_tokens_mean": 27.9,
+      "provenance": "MEASURED",
+      "engineering_capacity_rps": 8.705,
+      "native_trace_rps": 2.567
+    }
+  },
+  "findings": {
+    "economic_capacity": {
+      "conversation@10ms": {
+        "economic_capacity_rps": 0.9538,
+        "load_factor": 0.15,
+        "C_min_usd_per_Msvt": 4.4151,
+        "compliance_at_optimum": 0.7202,
+        "C_at_95pct_util": 329.7594,
+        "penalty_at_95pct": 74.69
+      },
+      "conversation@15ms": {
+        "economic_capacity_rps": 2.5436,
+        "load_factor": 0.4,
+        "C_min_usd_per_Msvt": 1.4564,
+        "compliance_at_optimum": 0.7939,
+        "C_at_95pct_util": 79.8266,
+        "penalty_at_95pct": 54.812
+      },
+      "conversation@20ms": {
+        "economic_capacity_rps": 3.1795,
+        "load_factor": 0.5,
+        "C_min_usd_per_Msvt": 1.0647,
+        "compliance_at_optimum": 0.8735,
+        "C_at_95pct_util": 19.3376,
+        "penalty_at_95pct": 18.163
+      },
+      "conversation@30ms": {
+        "economic_capacity_rps": 4.4513,
+        "load_factor": 0.7,
+        "C_min_usd_per_Msvt": 0.8045,
+        "compliance_at_optimum": 0.8142,
+        "C_at_95pct_util": 3.1342,
+        "penalty_at_95pct": 3.896
+      },
+      "conversation@50ms": {
+        "economic_capacity_rps": 5.0872,
+        "load_factor": 0.8,
+        "C_min_usd_per_Msvt": 0.6747,
+        "compliance_at_optimum": 0.8492,
+        "C_at_95pct_util": 1.6564,
+        "penalty_at_95pct": 2.455
+      },
+      "code@10ms": {
+        "economic_capacity_rps": 0.8705,
+        "load_factor": 0.1,
+        "C_min_usd_per_Msvt": 107.8711,
+        "compliance_at_optimum": 0.3186,
+        "C_at_95pct_util": 22905.4268,
+        "penalty_at_95pct": 212.341
+      },
+      "code@15ms": {
+        "economic_capacity_rps": 1.3057,
+        "load_factor": 0.15,
+        "C_min_usd_per_Msvt": 54.7134,
+        "compliance_at_optimum": 0.304,
+        "C_at_95pct_util": 2351.2193,
+        "penalty_at_95pct": 42.973
+      },
+      "code@20ms": {
+        "economic_capacity_rps": 1.3057,
+        "load_factor": 0.15,
+        "C_min_usd_per_Msvt": 41.8573,
+        "compliance_at_optimum": 0.3703,
+        "C_at_95pct_util": 2351.2193,
+        "penalty_at_95pct": 56.172
+      },
+      "code@30ms": {
+        "economic_capacity_rps": 1.3057,
+        "load_factor": 0.15,
+        "C_min_usd_per_Msvt": 34.13,
+        "compliance_at_optimum": 0.4428,
+        "C_at_95pct_util": 1044.218,
+        "penalty_at_95pct": 30.595
+      },
+      "code@50ms": {
+        "economic_capacity_rps": 1.741,
+        "load_factor": 0.2,
+        "C_min_usd_per_Msvt": 29.3806,
+        "compliance_at_optimum": 0.3893,
+        "C_at_95pct_util": 538.7468,
+        "penalty_at_95pct": 18.337
+      }
+    }
+  }
+}

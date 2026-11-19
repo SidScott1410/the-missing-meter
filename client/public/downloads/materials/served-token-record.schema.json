@@ -1,0 +1,236 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://themissingmeter.org/schema/served-token-record/v0.2.0",
+  "title": "Conforming Served-Token Record",
+  "description": "One publishable row implementing Appendix A.7. A record is non-conforming unless every field below is present. Design rule: the schema refuses to represent an unconditioned number, so a non-conforming measurement cannot be serialized at all.",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "measuring_party",
+    "conditioning_tuple",
+    "spend",
+    "work",
+    "cost_of_useful_work",
+    "slo_sensitivity",
+    "attribution"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "spec_version": { "const": "0.2.0" },
+    "measuring_party": {
+      "type": "object",
+      "required": ["name", "independent_of_vendor"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "independent_of_vendor": { "type": "boolean" },
+        "contact": { "type": "string" }
+      }
+    },
+
+    "conditioning_tuple": {
+      "description": "Appendix A.4. All six fields required; a value of C without them is undefined.",
+      "type": "object",
+      "required": ["workload", "model_artifact", "placement", "slo", "quality_floor", "window"],
+      "additionalProperties": false,
+      "properties": {
+        "workload": {
+          "type": "object",
+          "required": ["trace_class", "arrival_pattern", "input_tokens_p50", "output_tokens_p50", "pre_registered"],
+          "properties": {
+            "trace_class": { "type": "string" },
+            "arrival_pattern": { "type": "string", "enum": ["poisson", "replayed_production", "closed_loop", "burst", "other"] },
+            "input_tokens_p50": { "type": "number", "exclusiveMinimum": 0 },
+            "output_tokens_p50": { "type": "number", "exclusiveMinimum": 0 },
+            "pre_registered": {
+              "description": "Appendix A.5. Scope declared before measurement. False is permitted but must be disclosed; it downgrades the record to exploratory.",
+              "type": "boolean"
+            }
+          }
+        },
+
+        "model_artifact": {
+          "description": "Field 2. Also the artifact-class key: token-denominated cost is only comparable within an identical artifact_class_id.",
+          "type": "object",
+          "required": ["artifact_class_id", "weights", "version", "quantization", "tokenizer_id"],
+          "properties": {
+            "artifact_class_id": { "type": "string", "minLength": 1 },
+            "weights": { "type": "string" },
+            "version": { "type": "string" },
+            "quantization": { "type": "string" },
+            "tokenizer_id": { "type": "string" }
+          }
+        },
+
+        "placement": {
+          "type": "object",
+          "required": ["provider", "silicon", "region", "batching_policy"],
+          "properties": {
+            "provider": { "type": "string" },
+            "self_hosted": { "type": "boolean" },
+            "silicon": { "type": "string" },
+            "region": { "type": "string" },
+            "batching_policy": { "type": "string" },
+            "offered_load_rps": { "type": "number", "minimum": 0 }
+          }
+        },
+
+        "slo": {
+          "description": "Field 4. Percentile bounds stated numerically. Task-level equivalents permitted for task-shaped work.",
+          "type": "object",
+          "required": ["percentile", "ttft_ms_max", "tpot_ms_max"],
+          "properties": {
+            "percentile": { "type": "number", "exclusiveMinimum": 0, "maximum": 100 },
+            "ttft_ms_max": { "type": "number", "exclusiveMinimum": 0 },
+            "tpot_ms_max": { "type": "number", "exclusiveMinimum": 0 },
+            "task_deadline_s_max": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+          }
+        },
+
+        "quality_floor": {
+          "description": "Field 5. An acceptance test, stated operationally. Artifact identification alone is NOT a quality floor; that information lives in model_artifact.",
+          "type": "object",
+          "required": ["test_type", "test_id", "threshold", "evaluated_fraction"],
+          "properties": {
+            "test_type": {
+              "type": "string",
+              "enum": ["eval_score", "task_completion_check", "human_rating", "reference_accuracy", "programmatic_assertion"]
+            },
+            "test_id": { "type": "string", "minLength": 1 },
+            "threshold": { "type": "number" },
+            "evaluated_fraction": {
+              "description": "Share of compliant-candidate outputs actually tested. 1.0 = every output tested; below 1.0 the compliance rate carries sampling error, propagated into the interval on C.",
+              "type": "number", "exclusiveMinimum": 0, "maximum": 1
+            }
+          }
+        },
+
+        "window": {
+          "type": "object",
+          "required": ["start", "end", "sustained_load_rps", "stationarity"],
+          "properties": {
+            "start": { "type": "string", "format": "date-time" },
+            "end": { "type": "string", "format": "date-time" },
+            "sustained_load_rps": { "type": "number", "minimum": 0 },
+            "duration_over_p99_latency": {
+              "description": "Window length divided by measured p99 request latency. Records below 1000 are flagged short.",
+              "type": "number", "minimum": 0
+            },
+            "stationarity": {
+              "description": "Split-half check. Large deltas mean C describes a non-stationary window and is not reproducible by a second observer.",
+              "type": "object",
+              "required": ["first_half_C", "second_half_C", "relative_delta", "passes"],
+              "properties": {
+                "first_half_C": { "type": "number" },
+                "second_half_C": { "type": "number" },
+                "relative_delta": { "type": "number", "minimum": 0 },
+                "passes": { "type": "boolean" },
+                "threshold": { "type": "number" }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "spend": {
+      "$ref": "#/$defs/labeled_value",
+      "description": "S. All spend attributable to the workload in the window, including failed and retried requests."
+    },
+
+    "work": {
+      "description": "W. Denominated per the unit rule: compliant tasks are the primary denominator; compliant output tokens are a sub-case valid only within one artifact_class_id.",
+      "type": "object",
+      "required": ["denominator", "value", "provenance", "compliance_rate", "compliance_ci95"],
+      "properties": {
+        "denominator": { "type": "string", "enum": ["compliant_tasks", "compliant_output_tokens_millions"] },
+        "value": { "type": "number", "minimum": 0 },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "compliance_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "compliance_ci95": {
+          "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2
+        },
+        "billed_units": { "type": "number", "minimum": 0 },
+        "wasted_units": {
+          "description": "Units paid for that produced no compliant work. The quantity every current metric hides.",
+          "type": "number", "minimum": 0
+        }
+      }
+    },
+
+    "cost_of_useful_work": {
+      "type": "object",
+      "required": ["value", "units", "provenance", "ci95", "cross_artifact_comparable"],
+      "properties": {
+        "value": { "type": "number", "minimum": 0 },
+        "units": { "type": "string", "enum": ["USD_per_Msvt", "USD_per_compliant_task"] },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "ci95": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+        "cross_artifact_comparable": {
+          "description": "True only when units are USD_per_compliant_task. Token-denominated cost is not comparable across artifacts because token counts are seller-controlled and tokenizer-dependent.",
+          "type": "boolean"
+        },
+        "margin_to_slo": {
+          "description": "Headroom between measured percentile and the SLO bound, as a ratio. A placement compliant at 0.99 of its bound is not the same asset as one at 0.40.",
+          "type": "object",
+          "properties": {
+            "ttft_ratio": { "type": "number", "minimum": 0 },
+            "tpot_ratio": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+
+    "slo_sensitivity": {
+      "description": "Required. Compliance is binary, so C is discontinuous in the SLO parameter. The record must publish the curve, not just the point, so a reader can see how near the cliff the placement sits.",
+      "type": "object",
+      "required": ["swept_parameter", "points"],
+      "properties": {
+        "swept_parameter": { "type": "string", "enum": ["tpot_ms_max", "ttft_ms_max", "task_deadline_s_max"] },
+        "points": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "object",
+            "required": ["bound", "compliance_rate", "C"],
+            "properties": {
+              "bound": { "type": "number" },
+              "compliance_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+              "C": { "type": ["number", "null"] }
+            }
+          }
+        }
+      }
+    },
+
+    "attribution": {
+      "description": "Multi-tenant attribution of S. Both bases are reported because they bracket the honest answer: reserved_share charges idle capacity to whoever reserved it, token_share is the lower bound that ignores it.",
+      "type": "object",
+      "required": ["basis", "reserved_share_C", "token_share_C"],
+      "properties": {
+        "basis": { "type": "string", "enum": ["reserved_share", "token_share", "single_tenant"] },
+        "reserved_share_C": { "type": ["number", "null"] },
+        "token_share_C": { "type": ["number", "null"] }
+      }
+    },
+
+    "notes": { "type": "string" }
+  },
+
+  "$defs": {
+    "provenance": {
+      "description": "Appendix A.6. Inheritance rule: a derived figure carries the weakest label among its inputs.",
+      "type": "string",
+      "enum": ["MEASURED", "CONFIG", "SPEC", "SIM", "EST"]
+    },
+    "labeled_value": {
+      "type": "object",
+      "required": ["value", "provenance"],
+      "properties": {
+        "value": { "type": "number" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "units": { "type": "string" },
+        "source": { "type": "string" }
+      }
+    }
+  }
+}
