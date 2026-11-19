@@ -34,7 +34,7 @@ export const PRIMARY_PUBLICATION: PublicationRecord = {
   abstract:
     "AI is the first trillion-dollar infrastructure buildout that cannot yet state, in a standard unit, what its output costs. This paper proposes the served token as a unit of account for AI inference, conditioned on a stated service-level objective and quality floor.",
   author: "Sidney Scott",
-  affiliation: "The Ashby Institute",
+  affiliation: "Reckon Research",
   email: "sidney@reckonresearch.com",
   version: "v1.0",
   datePublished: "2026-07-15",

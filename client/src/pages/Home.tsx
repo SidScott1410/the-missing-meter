@@ -249,7 +249,7 @@ function HeroSection() {
           <span className="meta-label">Author</span>
           <span className="meta-value">Sidney Scott</span>
           <span className="meta-label">Affiliation</span>
-          <span className="meta-value">The Ashby Institute</span>
+          <span className="meta-value">Reckon Research</span>
           <span className="meta-label">Version</span>
           <span className="meta-value">v1.0</span>
           <span className="meta-label">Contact</span>
